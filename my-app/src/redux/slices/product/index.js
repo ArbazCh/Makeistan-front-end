@@ -20,7 +20,7 @@ export const fetchProduct = () => {
   // console.log("I'm here");
   return async function fetchProductThunk(dispatch) {
     const response = await fetch(
-      `https://api.escuelajs.co/api/v1/products/101`
+      `https://api.escuelajs.co/api/v1/products/88`
     );
     // console.log(response);
     const data = await response.json();
