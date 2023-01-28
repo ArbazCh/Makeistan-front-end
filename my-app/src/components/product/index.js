@@ -35,11 +35,11 @@ export const Product = () => {
 
       <div className="product-container">
         <div className="product-left">
-          <img
+          {/* <img
             src={product.images[0]}
             alt={product.title}
             className="product-image"
-          />
+          /> */}
         </div>
         <div className="product-right">
           <h1 className="product-title">{product?.title}</h1>
