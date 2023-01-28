@@ -1,0 +1,51 @@
+.checkout-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+  }
+  
+  .order-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .items-summary {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .delivery-summary {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .grand-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .confirm-order {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
+    align-self: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .confirm-order:hover {
+    background-color: #3e8e41;
+    transform: scale(1.1);
+  }
+  
