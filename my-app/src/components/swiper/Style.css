@@ -1,0 +1,82 @@
+/* === swiper area =======*/
+.swiper-img1,
+.swiper-img2,
+.swiper-img3{
+  float: right;
+  z-index: 9;
+  margin-right: 10%;
+  transition: all 1s ease 0s;
+  transform: scale(.8);
+  opacity: 0;
+}
+
+.swiper-slide.swiper-slide-active .swiper-img1,
+.swiper-slide.swiper-slide-active .swiper-img2,
+.swiper-slide.swiper-slide-active .swiper-img3{
+  transition-delay: .3s;
+  transform: scale(1);
+  opacity: 1!important;
+}
+.slider-content{
+  
+    margin-top: 25%;
+    margin-left: 8%;
+}
+
+/* ---------swiper content--------- */
+.slider-content h5
+{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 30px;
+  transform: translateY(30px);
+  transition: all 1s ease 0s;
+  letter-spacing: 5px;
+  color: #333;
+  opacity: 0;
+}
+.slider-content h1{
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 30px;
+  transition: all 1.5s ease 0s;
+  transform: translateY(30px);
+  color: #333;
+  opacity: 0;
+
+}
+.swiper-link{
+  transition: all 1.9s ease 0s;
+  transform: translateY(30px);
+  opacity: 0;
+}
+.swiper-slide.swiper-slide-active .slider-content h5,
+.swiper-slide.swiper-slide-active .slider-content h1,
+.swiper-slide.swiper-slide-active .slider-content .swiper-link
+{
+  transform: translateY(0px);
+  transition-delay: 1s;
+  opacity: 1;
+}
+/* === swiper area =======*/
+.main-button{
+  font-weight: 500;
+  display: inline-block;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 0;
+  background-color: #333;
+  font-size: 14px;
+  padding: 15px 40px;
+  transition-duration: .7s;
+  cursor: pointer;
+}
+
+.main-button:hover{
+  color: #333!important;
+  background-color: transparent;
+}

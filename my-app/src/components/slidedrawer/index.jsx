@@ -17,9 +17,14 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+// import MailIcon from '@mui/icons-material/Mail';
+import CheckroomIcon from '@mui/icons-material/Checkroom';
+import EarbudsIcon from '@mui/icons-material/Earbuds';
+import { Grid } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-
+import './style.css'
+import Searchfield from '../searchBar';
+import { display } from '@mui/system';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -47,6 +52,7 @@ const AppBar = styled(MuiAppBar, {
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
+    
   }),
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -54,14 +60,21 @@ const AppBar = styled(MuiAppBar, {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
+     
     }),
   }),
 }));
+const myAppBarstyle = {
+  backgroundColor: "#fff",
+   
+   
+};
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
+  backgroundColor: '#fff',
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
@@ -78,28 +91,51 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const data = [
+    
+    { name: "Clothing", icon: <CheckroomIcon /> },
+    { name: "Footwear", icon: <CheckroomIcon /> },
+    { name: "Accessories", icon: <EarbudsIcon /> },
+    { name: "Others", icon: <EarbudsIcon/> },
+    
+  ];
 
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} style={myAppBarstyle} >
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Persistent drawer
-            <IconButton color="primary" aria-label="add to shopping cart">
-              Cart{0}
-          <AddShoppingCartIcon />
+          <Grid container spacing={2} style={{alignItems:"center"}}>
+            <Grid item xs={2}>
+            
+              <IconButton
+                color="#000"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                style={{float: 'left'}}
+              >
+              <MenuIcon />
+              </IconButton>
+             
+            </Grid>
+            <Grid item xs={6} md={8}>
+             <Searchfield />
+            </Grid>
+            <Grid item xs={2} md={2}>
+             
+              <IconButton color="#000" aria-label="add to shopping cart" >
+                    Cart{0}
+               <AddShoppingCartIcon />
                </IconButton>
-          </Typography>
+             
+            </Grid>
+          </Grid>
+          
+            
+          
+            
         </Toolbar>
       </AppBar>
       <Drawer
@@ -122,19 +158,21 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+          {data.map((item,  index) => (
+            <ListItem  disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText   >
+                {item.name}
+                </ListItemText>
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider />
-        <List>
+        {/* <Divider /> */}
+        {/* <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
@@ -145,7 +183,7 @@ export default function PersistentDrawerLeft() {
               </ListItemButton>
             </ListItem>
           ))}
-        </List>
+        </List> */}
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
