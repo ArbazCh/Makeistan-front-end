@@ -2,10 +2,11 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchData } from '../.././redux/slices/allproducts';
+import { Grid } from '@mui/material';
 
 const Product = () => {
   const dispatch = useDispatch();
-  const { data, loading, error } = useSelector((state) => state.data);
+  const { products, loading, error } = useSelector((state) => state.allProducts);
 
   useEffect(() => {
     dispatch(fetchData());
@@ -16,13 +17,39 @@ const Product = () => {
 
   return (
     <ul>
-      {console.log(data)}
-      {data.map((item) => (
-        <li key={item.id}>
-          <h3>{item.title}</h3>
-          {/* <p>{item.body}</p> */}
-        </li>
+      {/* {console.log(data)} */}
+      
+      
+         <Grid item xs={12} container spacing={2}>
+         {products.map((item) => (
+                <Grid item lg={3} sm={4} md={6} xs={12}>
+                  <div className="card-outer">
+                   <div className="card-inner">
+                     <div className="image-wrap">
+                       <img src={item.thumbnail} alt="" style={{width:'200px'}} />
+                       <div className="image-over"></div>
+                        </div>
+                         <h3>{item.title}</h3>
+                      <div className="product-grid__content">
+                        <div className="title">
+                          <h3>
+                            <a >
+                              {item.description}
+                            </a>
+                          </h3>
+                          <button>add to cart</button>
+                         
+                        </div>
+                        <div className="price">
+                          <span className="main-price discounted">$17.00</span>
+                          <span className="discounted-price">$15.30</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Grid>
       ))}
+      </Grid>
     </ul>
   );
 };

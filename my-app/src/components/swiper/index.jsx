@@ -28,7 +28,7 @@ export default () => {
     >
       <SwiperSlide>
         <div className=" swiper-img1 ">
-          <img src={mern1} alt={"slider main image 1"} />
+          <img src={mern1} alt={"slider main image 1"} className="swiper-images" />
         </div>
         <div className="slider-content">
           <h5>Lorem, ipsum dolor.</h5>
@@ -43,7 +43,7 @@ export default () => {
         <div className="swiper-img relative">
           <img
             src={mern2}
-            className={"swiper-img2"}
+            className={"swiper-img2 swiper-images"}
             alt={"slider main image 2"}
           />
         </div>
@@ -61,7 +61,7 @@ export default () => {
         <div className="swiper-img relative">
           <img
             src={mern3}
-            className={"swiper-img3"}
+            className={"swiper-img3 swiper-images"}
             alt={"slider main image 3"}
           />
         </div>
@@ -79,7 +79,7 @@ export default () => {
         <div className="swiper-img relative">
           <img
             src={mern1}
-            className={"swiper-img1"}
+            className={"swiper-img1 swiper-images"}
             alt={"slider main image 4"}
           />
         </div>

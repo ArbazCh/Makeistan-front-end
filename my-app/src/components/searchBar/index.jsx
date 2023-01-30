@@ -8,7 +8,7 @@ const Searchfield = () => {
     <div class="search-widget">
         <form>
             <input type="search" placeholder="Search products ..." />
-            <button>
+            <button className='icon-btn'>
                 <SearchOutlinedIcon />
             </button>
         </form>

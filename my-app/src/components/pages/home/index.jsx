@@ -11,7 +11,7 @@ const Home = () => {
     <SideDrawer />
     <li><Link to="/Login">login</Link></li>
     <Swiper />
-    {/* <Product /> */}
+    <Product />
     <Card />
   </>
   )

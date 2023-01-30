@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  data: [],
+  products: [],
   loading: false,
   error: null,
 };
@@ -25,7 +25,7 @@ const dataSlice = createSlice({
       state.loading = true;
     },
     [fetchData.fulfilled]: (state, action) => {
-      state.data = action.payload;
+      state.products = action.payload.products;
       state.loading = false;
     },
     [fetchData.rejected]: (state, action) => {

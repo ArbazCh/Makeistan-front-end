@@ -15,7 +15,7 @@ form{
     background: transparent;
     background-clip: padding-box;
 }
-button{
+.icon-btn{
     position: absolute;
     right: 3px;
     top: 5px;

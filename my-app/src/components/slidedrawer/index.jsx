@@ -6,7 +6,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
+import LoginIcon from '@mui/icons-material/Login';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -25,6 +26,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import './style.css'
 import Searchfield from '../searchBar';
 import { display } from '@mui/system';
+import { Link } from 'react-router-dom';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -125,10 +127,16 @@ export default function PersistentDrawerLeft() {
             </Grid>
             <Grid item xs={2} md={2}>
              
-              <IconButton color="#000" aria-label="add to shopping cart" >
+              <IconButton color="#000" aria-label="add to shopping cart" style={{fontSize:'16px'}} >
                     Cart{0}
                <AddShoppingCartIcon />
-               </IconButton>
+              </IconButton>
+              <Link to='/Login' style={{textDecoration:'none'}}>
+                 <IconButton style={{fontSize:'16px'}}>
+                  Login
+                  <LoginIcon />
+                 </IconButton>
+              </Link>
              
             </Grid>
           </Grid>
