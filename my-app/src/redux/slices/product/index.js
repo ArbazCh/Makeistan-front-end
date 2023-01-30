@@ -1,28 +1,52 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { fetchProduct } from "./thunk";
+const initialState = {
+  product: [],
+  error: null,
+  status: "idle",
+};
 export const productSlice = createSlice({
   name: "product",
-  initialState: {
-    data: [],
-  },
-  reducers: {
-    setProduct: (state, action) => {
-      state.data = action.payload;
-      // console.log("Here is Payload", action.payload);
-    },
+  initialState,
+  extraReducers(builder) {
+    builder
+      .addCase(fetchProduct.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(fetchProduct.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = state.error.message;
+      })
+      .addCase(fetchProduct.fulfilled, (state, action) => {
+        state.product.push(action.payload);
+      });
   },
 });
 
-export const { setProduct } = productSlice.actions;
 export default productSlice.reducer;
 
-export const fetchProduct = () => {
-  // console.log("I'm here");
-  return async function fetchProductThunk(dispatch) {
-    const response = await fetch(`https://api.escuelajs.co/api/v1/products/88`);
-    // console.log(response);
-    const data = await response.json();
-    dispatch(setProduct(data));
-    // console.log(data);
-  };
-};
+// export const fetchProduct = (id) => async (dispatch) => {
+//   const response = await axios.get(
+//     `https://api.escuelajs.co/api/v1/products/${id}`
+//   );
+//   // const data = await response.json();
+//   dispatch(setProduct(response));
+//   // dispatch(setProduct(data));
+// };
+
+// import axios from "axios";
+// import getProductService from "../../../services/product.service.js";
+// import API from "../../../../src/api/axios.config.js";
+
+// export const fetchProduct = createAsyncThunk(
+//   "product/fetchProduct",
+//   async (id) => {
+//     try {
+//       // console.log("API", API.get(`/`));
+//       const response = await getProductService(id);
+//       return response.data;
+//     } catch (error) {
+//       console.error(error.message);
+//     }
+//   }
+// );
