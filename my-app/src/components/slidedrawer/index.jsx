@@ -24,12 +24,9 @@ import EarbudsIcon from '@mui/icons-material/Earbuds';
 import { Grid } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import './style.css'
-<<<<<<< HEAD
-=======
 import Searchfield from '../searchBar';
 import { display } from '@mui/system';
 import { Link } from 'react-router-dom';
->>>>>>> 955c40edb37bfe3325b02c80702601eb14615658
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -110,24 +107,6 @@ export default function PersistentDrawerLeft() {
       <CssBaseline />
       <AppBar position="fixed" open={open} style={myAppBarstyle} >
         <Toolbar>
-<<<<<<< HEAD
-          <IconButton
-            color="#000"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Persistent drawer
-            <IconButton color="#000" aria-label="add to shopping cart">
-              Cart{0}
-          <AddShoppingCartIcon />
-               </IconButton>
-          </Typography>
-=======
           <Grid container spacing={2} style={{alignItems:"center"}}>
             <Grid item xs={2}>
             
@@ -165,7 +144,6 @@ export default function PersistentDrawerLeft() {
             
           
             
->>>>>>> 955c40edb37bfe3325b02c80702601eb14615658
         </Toolbar>
       </AppBar>
       <Drawer
@@ -188,13 +166,8 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-<<<<<<< HEAD
-          {['Clothing', 'FootWear', 'Aceessories', 'Others'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-=======
           {data.map((item,  index) => (
             <ListItem  disablePadding>
->>>>>>> 955c40edb37bfe3325b02c80702601eb14615658
               <ListItemButton>
                 <ListItemIcon>
                   {item.icon}
