@@ -1,23 +1,26 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getTotal, addToCart } from "../../redux/slices/cart";
-import { fetchProduct } from "../../redux/slices/product";
+import { fetchProduct } from "../../redux/slices/product/thunk";
 import "./product.css";
 
 export const Product = () => {
-  const product = useSelector((state) => state.product.data);
-  const cart = useSelector((state) => state.cart);
   let qty;
   const dispatch = useDispatch();
+  const { id } = useParams();
+  let { product, error, status } = useSelector((state) => state.product);
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
-    dispatch(fetchProduct());
-  }, [dispatch]);
-
-  useEffect(() => {
+    dispatch(fetchProduct(id));
     dispatch(getTotal());
-  }, [cart, dispatch]);
+  }, [id] && [cart]);
+
+  // useEffect(() => {
+  //   dispatch(getTotal());
+  // }, [cart, dispatch]);
 
   const addToCartHandler = (product) => {
     const tempProduct = {
@@ -42,16 +45,16 @@ export const Product = () => {
           /> */}
         </div>
         <div className="product-right">
-          <h1 className="product-title">{product?.title}</h1>
+          <h1 className="product-title">{product[0]?.title}</h1>
           <div className="product-description">
-            <p>{product?.description}</p>
+            <p>{product[0]?.description}</p>
           </div>
           <div className="product-price-container">
-            <p className="product-price">PKR {product?.price}</p>
+            <p className="product-price">PKR {product[0]?.price}</p>
             <button
               className="add-to-cart"
               onClick={() => {
-                addToCartHandler(product);
+                addToCartHandler(product[0]);
               }}
             >
               Add to Cart

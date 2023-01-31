@@ -38,7 +38,7 @@ export const Cart = () => {
           <div className="cart-empty">
             <p>Your Cart is Empty</p>
             <div cla ssName="start-shopping">
-              <Link to="/product">
+              <Link to="/product/:id">
                 <span>Start Shopping</span>
               </Link>
             </div>
