@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetcAllData } from "./thunk";
 
 const initialState = {
   products: [],
@@ -6,31 +7,20 @@ const initialState = {
   error: null,
 };
 
-export const fetchData = createAsyncThunk("fetchData/allProducts", async () => {
-  try {
-    const response = await fetch("https://dummyjson.com/products");
-    const data = await response.json();
-    // console.log(Aata);
-    return data;
-  } catch (error) {
-    return error;
-  }
-});
-
 const dataSlice = createSlice({
   name: "data",
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchData.pending]: (state) => {
+    [fetcAllData.pending]: (state) => {
       state.loading = true;
     },
-    [fetchData.fulfilled]: (state, action) => {
+    [fetcAllData.fulfilled]: (state, action) => {
       //   console.log("Hello: ", action.payload);
       state.products = action.payload.products;
       state.loading = false;
     },
-    [fetchData.rejected]: (state, action) => {
+    [fetcAllData.rejected]: (state, action) => {
       state.error = action.error;
       state.loading = false;
     },
@@ -70,3 +60,17 @@ export default dataSlice.reducer;
 //     // console.log(data);
 //   };
 // };
+
+// export const fetcAllData = createAsyncThunk(
+//   "fetchData/allProducts",
+//   async () => {
+//     try {
+//       const response = await fetch("https://dummyjson.com/products");
+//       const data = await response.json();
+//       // console.log(Aata);
+//       return data;
+//     } catch (error) {
+//       return error;
+//     }
+//   }
+// );

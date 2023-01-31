@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchProduct } from "./thunk";
 const initialState = {
-  product: [],
+  product: {},
   error: null,
   status: "idle",
 };
@@ -18,7 +18,7 @@ export const productSlice = createSlice({
         state.error = state.error.message;
       })
       .addCase(fetchProduct.fulfilled, (state, action) => {
-        state.product.push(action.payload);
+        state.product = action.payload;
       });
   },
 });
