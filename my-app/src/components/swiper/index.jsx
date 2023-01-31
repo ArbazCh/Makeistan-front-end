@@ -7,6 +7,7 @@ import mern1 from "../images/mern1.png";
 import mern2 from "../images/mern2.png";
 import mern3 from "../images/mern3.jpg";
 // import Mainbutton from "./Mainbtn";
+import './Style.css';
 
 // Import Swiper styles
 import "swiper/css";
@@ -34,6 +35,7 @@ export default () => {
           <h1>Lorem ipsum dolor,<br /> sit amet consectetur adipisicing.</h1>
           <div className="swiper-link">
             {/* <Mainbutton /> */}
+            <button className="main-button" >lorem</button>
           </div>
         </div>
       </SwiperSlide>
@@ -50,6 +52,8 @@ export default () => {
           <h1>Lorem ipsum dolor, <br /> sit amet consectetur adipisicing.</h1>
           <div className="swiper-link">
             {/* <Mainbutton /> */}
+            <button className="main-button" >lorem</button>
+
           </div>
         </div>
       </SwiperSlide>
@@ -66,6 +70,8 @@ export default () => {
           <h1>Lorem ipsum dolor, <br /> sit amet consectetur adipisicing.</h1>
           <div className="swiper-link">
             {/* <Mainbutton /> */}
+            <button className="main-button" >lorem</button>
+
           </div>
         </div>
       </SwiperSlide>
@@ -82,6 +88,8 @@ export default () => {
           <h1>Lorem ipsum dolor, <br /> sit amet consectetur adipisicing.</h1>
           <div className="swiper-link">
             {/* <Mainbutton /> */}
+            <button className="main-button" >lorem</button>
+
           </div>
         </div>
       </SwiperSlide>
