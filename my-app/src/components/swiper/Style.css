@@ -1,4 +1,20 @@
 /* === swiper area =======*/
+<<<<<<< HEAD
+=======
+
+
+
+
+/* --------- */
+@media (max-width:600px) {
+  .swiper-images{
+    width: 300px;
+    height: 350px;
+  }
+  
+}
+/* --------- */
+>>>>>>> 955c40edb37bfe3325b02c80702601eb14615658
 .swiper-img1,
 .swiper-img2,
 .swiper-img3{
