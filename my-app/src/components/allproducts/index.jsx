@@ -2,11 +2,14 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchData } from '../.././redux/slices/allproducts';
-import { Grid } from '@mui/material';
+import { Grid, Skeleton } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import './style.css'
+
 
 const Product = () => {
   const dispatch = useDispatch();
-  const { products, loading, error } = useSelector((state) => state.allProducts);
+  const { products, loading,  error } = useSelector((state) => state.data);
 
   useEffect(() => {
     dispatch(fetchData());
@@ -26,18 +29,20 @@ const Product = () => {
                   <div className="card-outer">
                    <div className="card-inner">
                      <div className="image-wrap">
-                       <img src={item.thumbnail} alt="" style={{width:'200px'}} />
+                      {item ?
+                       (<img src={item.thumbnail} alt="" style={{width:'200px', maxHeight:'250px'}} loading="lazy"/>)
+                      : (<Skeleton variant="rectangular" animation="wave" width={210} height={118} />)}
                        <div className="image-over"></div>
                         </div>
                          <h3>{item.title}</h3>
                       <div className="product-grid__content">
                         <div className="title">
-                          <h3>
-                            <a >
+                          
+                            <a className='card-description' >
                               {item.description}
                             </a>
-                          </h3>
-                          <button>add to cart</button>
+                          
+                          <button>add to cart <span><AddIcon className='add-icon' /></span></button>
                          
                         </div>
                         <div className="price">

@@ -4,6 +4,7 @@ import Swiper from '../../swiper/index'
 import SideDrawer from '../../slidedrawer/index'
 import Product from '../../allproducts/index'
 import Card from '../../card'
+import Footer from '../../footer/footer'
 const Home = () => {
   return (
   <>
@@ -12,7 +13,8 @@ const Home = () => {
     <li><Link to="/Login">login</Link></li>
     <Swiper />
     <Product />
-    <Card />
+    {/* <Card /> */}
+    <Footer />
   </>
   )
 }

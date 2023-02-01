@@ -1,0 +1,44 @@
+.main-footer{
+    background-color: #f8f8f8;
+    padding-top : 100px;
+}
+.finnerlinks{
+ display: flex;
+ flex-direction: column;
+}
+.footer-inner{
+    margin: 0 10%;
+}
+.footer-inner h1{
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
+}
+.routelink{
+    margin-bottom: 30px !important;
+    font-size: 15px;
+    line-height: 1.3;
+    position: relative;
+    color: #999 !important;
+    cursor: pointer;
+    text-decoration: none!important;
+
+}
+.routelink:hover{
+    color: #333!important;
+}
+.fouterlinks{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 22%;
+}
+.footer-icons{
+    padding: 10px;
+    font-size: 52px!important;
+    color: #999;
+}
+.footer-icons:hover{
+    color: #333;
+}
