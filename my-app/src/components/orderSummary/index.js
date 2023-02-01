@@ -1,13 +1,7 @@
 import React from "react";
-// eslint-disable-next-line
-// import { useSelector } from "react-redux";
-// import postOrderService from "../../services/order.service";
-// import "./checkout.css";
 
 export const OrderSummary = (cart) => {
-  console.log("C:", cart);
-  const { totalAmount, totalItems, cartItems } = cart.cart;
-  console.log("In the summary", totalAmount, totalItems, cartItems);
+  const { totalAmount, totalItems } = cart.cart;
   let delivery = 300;
   return (
     <div className="checkout-page">
@@ -25,40 +19,3 @@ export const OrderSummary = (cart) => {
     </div>
   );
 };
-{
-  /* <h1>{cartItems[0].title}</h1> */
-}
-// import axios from "axios";
-// import API from "../../../src/api/axios.config";
-
-// const data =
-// await API.post("/create", {
-//   paymentId: "1",
-//   date: "2020-03-12",
-//   orderStatus: "pending",
-//   productId: "3",
-//   sellerId: 3,
-//   orderNumber: "1234567",
-//   quantity: `${cart.cartItems[0].quantity}`,
-//   totalPrice: `${cart.totalAmount}`,
-// });
-// const response = await data.json();
-
-// {
-//   method: "POST",
-//   mode: "cors",
-//   body: JSON.stringify({
-//     paymentId: "1",
-//     date: "2020-03-12",
-//     orderStatus: "pending",
-//     productId: "3",
-//     sellerId: 3,
-//     orderNumber: "1234567",
-//     quantity: `${cart.cartItems[0].quantity}`,
-//     totalPrice: `${cart.totalAmount}`,
-//   }),
-//   headers: {
-//     "Content-Type": "application/json",
-//     authorization: `Bearer ${token}`,
-//   },
-// }

@@ -2,8 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./cart.css";
-import { CartItem } from "../../components/cart";
+import { CartItem } from "../../components/cartItem";
 import { clearCart, getTotal } from "../../redux/slices/cart";
+import { Navbar } from "../../components/navbar";
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -18,6 +19,7 @@ export const Cart = () => {
 
   return (
     <>
+      <Navbar />
       <div className="cart-container">
         <h2>Shopping Cart</h2>
         {cart.cartItems.length === 0 ? (
@@ -70,43 +72,3 @@ export const Cart = () => {
     </>
   );
 };
-
-// addToCart,
-// removeFromCart,
-// decreaseCart,
-
-// const handleReomveCart = (cartItem) => {
-//   dispatch(removeFromCart(cartItem));
-// };
-// const handleDecreaseCart = (cartItem) => {
-//   dispatch(decreaseCart(cartItem));
-// };
-// const handleIncreaseCart = (cartItem) => {
-//   dispatch(addToCart(cartItem));
-// };
-
-/*  <div className="cart-item" key={cartItem.id}>
-                  <div className="cart-product">
-                    //<img src={cartItem.images[1]} alt={cartItem.title} /> 
-                    <div>
-                      <h3>{cartItem.title}</h3>
-                      <p>{cartItem.description}</p>
-                      <button onClick={() => handleReomveCart(cartItem)}>
-                        Remove
-                      </button>
-                    </div>
-                  </div>
-                  <div className="cart-product-price">PKR {cartItem.price}</div>
-                  <div className="cart-product-quantity">
-                    <button onClick={() => handleDecreaseCart(cartItem)}>
-                      -
-                    </button>
-                    <div className="count">{cartItem.quantity}</div>
-                    <button onClick={() => handleIncreaseCart(cartItem)}>
-                      +
-                    </button>
-                  </div>
-                  <div className="cart-product-total-price">
-                    PKR {cartItem.quantity * cartItem.price}
-                  </div>
-                </div>*/

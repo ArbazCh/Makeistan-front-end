@@ -1,10 +1,28 @@
 import { Link } from "react-router-dom";
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTotal } from "../../redux/slices/cart";
+import { addToCart } from "../../redux/slices/cart";
 import "./product.css";
 
 export const Product = (item) => {
   const product = item.product;
   // console.log("product: ", product);
+  const dispatch = useDispatch();
+  let qty;
+  const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(getTotal());
+  }, [cart, dispatch]);
+
+  const addToCartHandler = (product) => {
+    const tempProduct = {
+      ...product,
+      quantity: qty,
+    };
+    dispatch(addToCart(tempProduct));
+  };
 
   return (
     <>
@@ -31,6 +49,14 @@ export const Product = (item) => {
           </div>
         </div>
       </Link>
+      <button
+        className="add-to-cart"
+        onClick={() => {
+          addToCartHandler(product);
+        }}
+      >
+        Add to Cart
+      </button>
     </>
   );
 };
