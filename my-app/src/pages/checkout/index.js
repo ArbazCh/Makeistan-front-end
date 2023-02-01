@@ -1,20 +1,28 @@
-import React from "react";
-import { useSelector } from "react-redux";
-
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import postOrderService from "../../services/order.service";
 import "./checkout.css";
+import { OrderSummary } from "../../components/orderSummary";
+import { getTotal } from "../../redux/slices/cart";
+
 export const Checkout = () => {
-  let delivery = 300;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTotal());
+  }, [dispatch]);
+
+  //   let delivery = 300;
   const cart = useSelector((state) => state.cart);
+  //   console.log("In checkout", cart);
   const quantity = cart.cartItems[0].quantity;
   const totalAmount = cart.totalAmount;
 
-  const PlaceOrderHandler = async (cart) => {
+  const PlaceOrderHandler = async () => {
     try {
       let response = await postOrderService(quantity, totalAmount);
       response = await response.data;
       if (response.body) {
-        localStorage.removeItem("cartItems");
+        // localStorage.removeItem("cartItems");
         alert("Your Order has been Placed");
       } else {
         alert("Something went wrong, Please try again later");
@@ -26,18 +34,8 @@ export const Checkout = () => {
   };
 
   return (
-    <div className="checkout-page">
-      <h1>Checkout Page</h1>
-      <div className="order-summary">
-        <h2>Order Summary</h2>
-        <h3 className="items-summary">
-          Select {cart?.totalItems} item(s) Price {cart?.totalAmount} PKR
-        </h3>
-        <h3 className="delivery-summary">Delivery Cost {delivery} PKR</h3>
-        <h2 className="grand-total">
-          Grand Total {cart?.totalAmount + delivery} PKR
-        </h2>
-      </div>
+    <div>
+      <OrderSummary cart={cart} />
       <button className="confirm-order" onClick={() => PlaceOrderHandler(cart)}>
         Place Order
       </button>
