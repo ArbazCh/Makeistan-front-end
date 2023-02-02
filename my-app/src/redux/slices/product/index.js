@@ -1,30 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { fetchProduct } from "./thunk";
+const initialState = {
+  product: [],
+  error: null,
+  status: "idle",
+};
 export const productSlice = createSlice({
   name: "product",
-  initialState: {
-    data: [],
-  },
-  reducers: {
-    setProduct: (state, action) => {
-      state.data = action.payload;
-      // console.log("Here is Payload", action.payload);
-    },
+  initialState,
+  extraReducers(builder) {
+    builder
+      .addCase(fetchProduct.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(fetchProduct.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = state.error.message;
+      })
+      .addCase(fetchProduct.fulfilled, (state, action) => {
+        state.product = action.payload;
+      });
   },
 });
 
-export const { setProduct } = productSlice.actions;
 export default productSlice.reducer;
-
-export const fetchProduct = () => {
-  // console.log("I'm here");
-  return async function fetchProductThunk(dispatch) {
-    const response = await fetch(
-      `https://api.escuelajs.co/api/v1/products/88`
-    );
-    // console.log(response);
-    const data = await response.json();
-    dispatch(setProduct(data));
-    // console.log(data);
-  };
-};

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-
+import "../../../style.css";
 
 
 const Login = () => {
@@ -35,7 +35,7 @@ const Login = () => {
         document.cookie = (`token=${resdata.jwtToken}`);
   
         // toast.success("Logged in Successfully");
-        navigate('/product')
+        navigate('/')
 
       } else if (resdata.status === 422 || !resdata) {
         window.alert("Invalid Registration ");

@@ -2,11 +2,10 @@
 import {  createAsyncThunk } from '@reduxjs/toolkit';
 import { getAllProductService } from '../../../services/product.service';
 
-
-export const fetchAllData = createAsyncThunk('fetchData', async () => {
+export const fetchAllData = createAsyncThunk('fetchData/allProducts', async () => {
     try {
       const response = await getAllProductService() ;
-      const data = await response.json();
+      const data = await response.data;
       return data;
     } catch (error) {
       return error;
