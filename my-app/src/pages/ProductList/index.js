@@ -27,4 +27,8 @@ export const ProductList = () => {
       ))}
     </>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 0eb3a4fb083303a4fda9a090a49062b692f4f7c5

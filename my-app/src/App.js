@@ -4,9 +4,11 @@ import { Cart } from "./pages/cart";
 import { Checkout } from "./pages/checkout";
 import Register from "../src/components/forms/register/index";
 import Login from "../src/components/forms/login/index";
+import Protected from "../src/components/protectedroutes/index";
+import ForgetP from "./components/forms/forgetpassword"
+
 import Home from "../src/pages/home/index";
 // import Protected from "../src/components/protectedroutes/index";
-import ForgetP from "./components/forms/forgetpassword";
 import { ProductList } from "../src/pages/ProductList";
 
 // import { ProtectedRoute } from "./routes/route.protected";
