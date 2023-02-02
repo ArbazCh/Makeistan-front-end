@@ -1,17 +1,17 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchData } from "../.././redux/slices/allproducts";
+import { fetcAllData } from "../../redux/slices/allproducts/thunk";
+import { Navbar } from "../../components/navbar";
+import { Product } from "../../components/product";
 
-export const AllProduct = () => {
+export const ProductList = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector(
     (state) => state.allProducts
   );
-  //   console.log("data", products);
-
   useEffect(() => {
-    dispatch(fetchData());
+    dispatch(fetcAllData());
   }, [dispatch]);
 
   if (loading) return <p>Loading...</p>;
@@ -19,12 +19,10 @@ export const AllProduct = () => {
 
   return (
     <>
+      <Navbar />
       {products.map((item) => (
-        <div className="card">
-          <img src={item.images[0]} alt="Denim Jeans" />
-          <h1>{item?.title}</h1>
-          <p class="price">{item?.price}</p>
-          <p>{item?.description}</p>
+        <div key={item.id}>
+          <Product product={item} />
         </div>
       ))}
     </>

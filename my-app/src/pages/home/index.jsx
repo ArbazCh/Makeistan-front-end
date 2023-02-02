@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Swiper from '../../swiper/index'
-import SideDrawer from '../../slidedrawer/index'
+import Swiper from '../../components/swiper'
+import SideDrawer from '../../components/slidedrawer/'
 const Home = () => {
   return (
   <>

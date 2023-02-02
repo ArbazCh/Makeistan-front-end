@@ -1,7 +1,10 @@
 import API from "../api/axios.config";
 
 const getProductService = async (id) => {
-  return await API.get(`https://api.escuelajs.co/api/v1/products/${id}`);
+  return await API.get(`/products/${id}`);
+};
+const getAllProductService = async () => {
+  return await API.get("/products");
 };
 
-export default getProductService;
+export { getProductService, getAllProductService };

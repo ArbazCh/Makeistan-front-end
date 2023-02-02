@@ -14,6 +14,7 @@ export const cartSlice = createSlice({
 
   reducers: {
     addToCart(state, action) {
+      // console.log("In the cart", action.payload);
       const itemIndex = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
       );
@@ -57,6 +58,7 @@ export const cartSlice = createSlice({
           const itemTotal = price * quantity;
           cartTotal.total += itemTotal;
           cartTotal.quantity += quantity;
+          // console.log("CartTotal: ", cartTotal);
           return cartTotal;
         },
         {
