@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   products: [],
+  searchTerm:'',
   loading: false,
   error: null,
 };
@@ -19,7 +20,11 @@ export const fetchData = createAsyncThunk('fetchData', async () => {
 const dataSlice = createSlice({
   name: 'data',
   initialState,
-  reducers: {},
+  reducers: {
+    // setSearchTerm: (state, action) => {
+    //   state.searchTerm = action.payload;
+    // },
+  },
   extraReducers: {
     [fetchData.pending]: (state) => {
       state.loading = true;
@@ -35,7 +40,7 @@ const dataSlice = createSlice({
   },
 });
 
-export default dataSlice.reducer;
+export default  dataSlice.reducer;
 
 
 
