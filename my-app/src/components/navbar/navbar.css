@@ -1,8 +1,16 @@
 nav {
     background-color: #868b86;
-    padding: 1px;
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
     /* text-align: center; */
     width: 100%;
     position: sticky;
     top: 0px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .right-text-container{
+    display: flex;
+    /* float: right; */
+    /* margin-right: 10px; */
   }

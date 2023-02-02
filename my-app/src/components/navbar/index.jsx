@@ -10,12 +10,19 @@ export const Navbar=()=> {
   return (
     <>
     <nav>
-    <Link to={'/cart'}>
-        <button className='cart-icon'>Cart {totalItems} </button>
-    </Link>
+      <div>
     <Link to={'/'}>
         <h1>MakesitanShop.</h1>
     </Link>
+      </div>
+    <div className='right-text-container'>
+    <Link to={'/cart'}>
+        <button className='cart-icon'>Cart {totalItems} </button>
+    </Link>
+    <Link to={'/Orders'}>
+      <h3>Orders</h3>
+    </Link>
+    </div>
     </nav>
     </>
   )

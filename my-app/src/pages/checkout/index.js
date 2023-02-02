@@ -19,8 +19,10 @@ export const Checkout = () => {
     try {
       let response = await postOrderService(quantity, totalAmount);
       response = await response.data;
+      console.log("order res: ", response.body.order.rows[0]);
       if (response.body) {
         alert("Your Order has been Placed");
+        localStorage.removeItem("cartItems");
       } else {
         alert("Something went wrong, Please try again later");
         //Navigate to Error Page for Try Again

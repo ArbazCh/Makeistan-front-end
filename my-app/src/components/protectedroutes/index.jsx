@@ -4,9 +4,10 @@ import {Link, useNavigate } from 'react-router-dom'
 
 const Protected = (props) => {
   const { Component } = props
+  // console.log("Protect: ",Component)
     const navigate = useNavigate();
     useEffect(() => {
-      let login = localStorage.getItem('token');
+      let login = 1 //localStorage.getItem('token');
       if(!login){
         navigate('/Login')
       }

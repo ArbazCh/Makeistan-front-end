@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchProduct } from "./thunk";
 const initialState = {
-  product: [],
+  product: {},
   error: null,
   status: "idle",
 };

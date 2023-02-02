@@ -5,7 +5,7 @@ const token =
 const BASE_URL = "https://dummyjson.com";
 
 const API = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL, //"http://localhost:5000/api",
   headers: {
     Authorization: `Bearer ${token}`,
   },

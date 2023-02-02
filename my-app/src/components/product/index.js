@@ -32,11 +32,14 @@ export const Product = (item) => {
       <Link to={`/products/${product?.id}`}>
         <div className="product-container">
           <div className="product-left">
-            {/* <img
+            {
+              /* <img
               src={product?.images[0]}
               alt={product?.title}
               className="product-image"
-            /> */}
+            /> */
+              console.log("Images: ", product?.images)
+            }
           </div>
           <div className="product-right">
             <h1 className="product-title">{product?.title}</h1>
