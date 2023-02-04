@@ -6,7 +6,8 @@ export const fetchProduct = createAsyncThunk(
   async (id) => {
     try {
       const response = await getProductService(id);
-      return await response.data;
+      // console.log("rrres: ", response.data[0]);
+      return await response.data[0];
     } catch (error) {
       console.error(error.message);
     }

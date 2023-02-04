@@ -20,6 +20,9 @@ export const ordertSlice = createSlice({
       .addCase(postOrder.rejected, (state, action) => {
         state.loading = false;
         state.error = state.error.message;
+        toast.success("Something went wrong. Please try again later", {
+          position: "top-center",
+        });
       })
       .addCase(postOrder.fulfilled, (state, action) => {
         state.loading = false;

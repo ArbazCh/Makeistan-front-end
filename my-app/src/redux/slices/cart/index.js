@@ -2,7 +2,10 @@
 import { toast } from "react-toastify";
 // eslint-disable-next-line
 import { createSlice, current } from "@reduxjs/toolkit";
-import { fetchFromLocalStorage, storeInLocalStorage } from "../../../helpers";
+import {
+  fetchFromLocalStorage,
+  storeInLocalStorage,
+} from "../../../helpers/localStorage";
 
 const initialState = {
   cartItems: fetchFromLocalStorage(),
@@ -16,14 +19,19 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
+      // console.log("slice: ", current(state.cartItems));
+      // console.log("slice: ", action.payload);
       const tempItem = state.cartItems.find(
-        (item) => item.id === action.payload.id
+        (item) => item.productId === action.payload.productId
       );
       if (tempItem) {
         const tempCart = state.cartItems.map((item) => {
-          if (item.id === action.payload.id) {
+          console.log("Itemd: ", current(item));
+          if (item.productId === action.payload.productId) {
             let newQty = item.quantity + action.payload.quantity;
-            let newTotalPrice = newQty * item.price;
+            // console.log("qty: ", newQty);
+            let newTotalPrice = newQty * item.unitPrice;
+            // console.log("UP: ", newTotalPrice);
             return { ...item, quantity: newQty, totalPrice: newTotalPrice };
           } else {
             return item;
@@ -46,7 +54,7 @@ export const cartSlice = createSlice({
     },
     removeFromCart(state, action) {
       const tempCart = state.cartItems.filter(
-        (item) => item.id !== action.payload.id
+        (item) => item.productId !== action.payload.productId
       );
       state.cartItems = tempCart;
       storeInLocalStorage(state.cartItems);
@@ -56,18 +64,19 @@ export const cartSlice = createSlice({
       });
     },
     toggleCartQty(state, action) {
+      // console.log("Action: ", action.payload);
       const tempCart = state.cartItems.map((item) => {
-        if (item.id === action.payload.id) {
+        if (item.id === action.payload.productId) {
           let tempQty = item.quantity;
           let tempTotalPrice = item.totalPrice;
           if (action.payload.type === "INC") {
             tempQty++;
-            tempTotalPrice = tempQty * item.price;
+            tempTotalPrice = tempQty * item.unitPrice;
           }
           if (action.payload.type === "DEC") {
             tempQty--;
             if (tempQty < 1) tempQty = 1;
-            tempTotalPrice = tempQty * item.price;
+            tempTotalPrice = tempQty * item.unitPrice;
           }
           return { ...item, quantity: tempQty, totalPrice: tempTotalPrice };
         } else {
