@@ -4,14 +4,10 @@ import { Cart } from "./pages/cart";
 import { Checkout } from "./pages/checkout";
 import Register from "../src/components/forms/register/index";
 import Login from "../src/components/forms/login/index";
-import Protected from "../src/components/protectedroutes/index";
-import ForgetP from "./components/forms/forgetpassword"
-
+import ForgetP from "./components/forms/forgetpassword";
 import Home from "../src/pages/home/index";
-// import Protected from "../src/components/protectedroutes/index";
+import Protected from "../src/routes/route.protected";
 import { ProductList } from "../src/pages/ProductList";
-
-// import { ProtectedRoute } from "./routes/route.protected";
 
 function App() {
   return (
@@ -23,10 +19,13 @@ function App() {
           <Route path="/game" element={<Home />} />
           {/* <Route  path='/' element={<SideDrawer />} /> */}
           <Route path="/ForgetP" element={<ForgetP />} />
-          {/* <Route  path='/Home' element={ <Protected Component = {Home} />}/> */}
+          {/* <Route path="/Home" element={<Protected Component={Home} />} /> */}
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/checkout"
+            element={<Protected Component={Checkout} />}
+          />
           <Route path="/" element={<ProductList />} />
         </Routes>
       </BrowserRouter>

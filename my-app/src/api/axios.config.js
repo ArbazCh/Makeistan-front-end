@@ -5,14 +5,10 @@ const token =
 const BASE_URL = "https://dummyjson.com";
 
 const API = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL, //"http://localhost:5000/api",
   headers: {
     Authorization: `Bearer ${token}`,
   },
 });
 
-<<<<<<< HEAD
 export default API;
-=======
-export default API;
->>>>>>> 0eb3a4fb083303a4fda9a090a49062b692f4f7c5

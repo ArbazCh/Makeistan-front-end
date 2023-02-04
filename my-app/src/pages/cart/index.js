@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./cart.css";
 import { CartItem } from "../../components/cartItem";
-import { clearCart, getTotal } from "../../redux/slices/cart";
+import { clearCart, getCartTotal } from "../../redux/slices/cart";
 import { Navbar } from "../../components/navbar";
 
 export const Cart = () => {
@@ -14,7 +14,7 @@ export const Cart = () => {
     dispatch(clearCart());
   };
   useEffect(() => {
-    dispatch(getTotal());
+    dispatch(getCartTotal());
   }, [cart, dispatch]);
 
   return (

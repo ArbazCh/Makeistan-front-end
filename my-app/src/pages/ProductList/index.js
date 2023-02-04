@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetcAllData } from "../../redux/slices/allproducts/thunk";
+import { fetchAllData } from "../../redux/slices/allproducts/thunk";
 import { Navbar } from "../../components/navbar";
 import { Product } from "../../components/product";
 
@@ -11,7 +11,7 @@ export const ProductList = () => {
     (state) => state.allProducts
   );
   useEffect(() => {
-    dispatch(fetcAllData());
+    dispatch(fetchAllData());
   }, [dispatch]);
 
   if (loading) return <p>Loading...</p>;
@@ -27,8 +27,4 @@ export const ProductList = () => {
       ))}
     </>
   );
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 0eb3a4fb083303a4fda9a090a49062b692f4f7c5
