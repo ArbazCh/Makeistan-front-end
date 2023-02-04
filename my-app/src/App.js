@@ -4,9 +4,9 @@ import { Cart } from "./pages/cart";
 import { Checkout } from "./pages/checkout";
 import Register from "../src/components/forms/register/index";
 import Login from "../src/components/forms/login/index";
+import ForgetP from "./components/forms/forgetpassword";
 import Home from "../src/pages/home/index";
 import Protected from "../src/routes/route.protected";
-import ForgetP from "./components/forms/forgetpassword";
 import { ProductList } from "../src/pages/ProductList";
 
 function App() {
