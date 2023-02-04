@@ -3,23 +3,22 @@ import { useSelector, useDispatch } from "react-redux";
 import postOrderService from "../../services/order.service";
 import "./checkout.css";
 import { OrderSummary } from "../../components/orderSummary";
-import { getTotal } from "../../redux/slices/cart";
+import { getCartTotal } from "../../redux/slices/cart";
 
 export const Checkout = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getTotal());
+    dispatch(getCartTotal());
   }, [dispatch]);
 
   const cart = useSelector((state) => state.cart);
-  const quantity = cart.cartItems[0].quantity;
+  const quantity = cart.totalItems;
   const totalAmount = cart.totalAmount;
 
   const PlaceOrderHandler = async () => {
     try {
       let response = await postOrderService(quantity, totalAmount);
       response = await response.data;
-      console.log("order res: ", response.body.order.rows[0]);
       if (response.body) {
         alert("Your Order has been Placed");
         localStorage.removeItem("cartItems");

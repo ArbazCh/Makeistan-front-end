@@ -19,9 +19,6 @@ export const Navbar=()=> {
     <Link to={'/cart'}>
         <button className='cart-icon'>Cart {totalItems} </button>
     </Link>
-    <Link to={'/Orders'}>
-      <h3>Orders</h3>
-    </Link>
     </div>
     </nav>
     </>

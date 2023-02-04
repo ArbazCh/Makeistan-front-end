@@ -16,7 +16,6 @@ const allProductSlice = createSlice({
       state.loading = true;
     },
     [fetcAllData.fulfilled]: (state, action) => {
-      //   console.log("Hello: ", action.payload);
       state.products = action.payload.products;
       state.loading = false;
     },

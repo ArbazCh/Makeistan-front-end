@@ -7,6 +7,7 @@ export const fetcAllData = createAsyncThunk(
     try {
       const response = await getAllProductService();
       const data = await response.data;
+      // console.log("All Products: ", data);
       return data;
     } catch (error) {
       return error;
