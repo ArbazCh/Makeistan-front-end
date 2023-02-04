@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetcAllData } from "./thunk";
+import { fetchAllData } from "./thunk";
 
 const initialState = {
   products: [],
@@ -12,14 +12,14 @@ const allProductSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetcAllData.pending]: (state) => {
+    [fetchAllData.pending]: (state) => {
       state.loading = true;
     },
-    [fetcAllData.fulfilled]: (state, action) => {
+    [fetchAllData.fulfilled]: (state, action) => {
       state.products = action.payload.products;
       state.loading = false;
     },
-    [fetcAllData.rejected]: (state, action) => {
+    [fetchAllData.rejected]: (state, action) => {
       state.error = action.error;
       state.loading = false;
     },
