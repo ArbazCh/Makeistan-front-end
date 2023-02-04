@@ -8,11 +8,14 @@ import ForgetP from "./components/forms/forgetpassword";
 import Home from "../src/pages/home/index";
 import Protected from "../src/routes/route.protected";
 import { ProductList } from "../src/pages/ProductList";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <ToastContainer />
         <Routes>
           <Route path="/Register" element={<Register />} />
           <Route path="/login" element={<Login />} />

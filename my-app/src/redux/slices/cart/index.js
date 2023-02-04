@@ -1,4 +1,6 @@
 // eslint-disable-next-line
+import { toast } from "react-toastify";
+// eslint-disable-next-line
 import { createSlice, current } from "@reduxjs/toolkit";
 import { fetchFromLocalStorage, storeInLocalStorage } from "../../../helpers";
 
@@ -29,9 +31,17 @@ export const cartSlice = createSlice({
         });
         state.cartItems = tempCart;
         storeInLocalStorage(state.cartItems);
+
+        toast.info(`Increased product quantity`, {
+          position: "bottom-left",
+        });
       } else {
         state.cartItems.push(action.payload);
         storeInLocalStorage(state.cartItems);
+
+        toast.success("Product Added to Cart", {
+          position: "bottom-left",
+        });
       }
     },
     removeFromCart(state, action) {
@@ -40,6 +50,10 @@ export const cartSlice = createSlice({
       );
       state.cartItems = tempCart;
       storeInLocalStorage(state.cartItems);
+
+      toast.success("Product Removed from Cart", {
+        position: "bottom-left",
+      });
     },
     toggleCartQty(state, action) {
       const tempCart = state.cartItems.map((item) => {
@@ -67,6 +81,10 @@ export const cartSlice = createSlice({
     clearCart(state, action) {
       state.cartItems = [];
       storeInLocalStorage(state.cartItems);
+
+      toast.success("Cart Cleared ", {
+        position: "bottom-left",
+      });
     },
     getCartTotal(state) {
       state.totalAmount = state.cartItems.reduce((cartTotal, cartItem) => {
