@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { postOrder } from "./thunk";
-import navigate from "navigate";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   order: {},
@@ -30,7 +30,6 @@ export const ordertSlice = createSlice({
           position: "top-center",
         });
         localStorage.removeItem("cart");
-        // navigate("/");
       });
   },
 });

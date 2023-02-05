@@ -24,7 +24,7 @@ export const cartSlice = createSlice({
       );
       if (tempItem) {
         const tempCart = state.cartItems.map((item) => {
-          console.log("Itemd: ", current(item));
+          // console.log("Itemd: ", current(item));
           if (item.productId === action.payload.productId) {
             let newQty = item.quantity + action.payload.quantity;
             let newTotalPrice = newQty * item.unitPrice;
@@ -61,7 +61,7 @@ export const cartSlice = createSlice({
     },
     toggleCartQty(state, action) {
       const tempCart = state.cartItems.map((item) => {
-        if (item.id === action.payload.productId) {
+        if (item.productId === action.payload.id) {
           let tempQty = item.quantity;
           let tempTotalPrice = item.totalPrice;
           if (action.payload.type === "INC") {
