@@ -46,11 +46,14 @@ export const Product = (item) => {
 
   return (
     <>
-      <Link to={`/products/${product?.productId}`}>
+      <Link
+        to={`/products/${product?.productId}`}
+        style={{ textDecoration: "none" }}
+      >
         <div className="product-container">
           <div className="product-left">
             <img
-              src={product?.image} //"https://i.dummyjson.com/data/products/1/1.jpg" //
+              src={product?.image}
               alt={product?.name}
               className="product-image"
             />
@@ -59,33 +62,39 @@ export const Product = (item) => {
             <h1 className="product-title">{product?.name}</h1>
             <div className="product-description">
               <p>{product?.description}</p>
-              <button
-                onClick={() => {
-                  increaseQty();
-                }}
-              >
-                +
-              </button>
-              <span> {qty} </span>
-              <button
-                onClick={() => {
-                  decreaseQty();
-                }}
-              >
-                -
-              </button>
             </div>
             <div className="product-price-container">
               <p className="product-price">PKR {product?.unitPrice}</p>
             </div>
-            <button
-              className="add-to-cart"
-              onClick={() => {
-                addToCartHandler(product);
-              }}
-            >
-              Add to Cart
-            </button>
+
+            <div className="cart-buttons">
+              <div className="input-buttons">
+                <button
+                  onClick={() => {
+                    increaseQty();
+                  }}
+                >
+                  +
+                </button>
+                <span> {qty} </span>
+                <button
+                  onClick={() => {
+                    decreaseQty();
+                  }}
+                >
+                  -
+                </button>
+              </div>
+
+              <button
+                className="add-to-cart"
+                onClick={() => {
+                  addToCartHandler(product);
+                }}
+              >
+                Add to Cart
+              </button>
+            </div>
           </div>
         </div>
       </Link>

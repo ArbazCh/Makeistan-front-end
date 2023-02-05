@@ -10,9 +10,9 @@ export const Navbar=()=> {
   return (
     <>
     <nav>
-      <div>
-    <Link to={'/'}>
-        <h1>MakesitanShop.</h1>
+      <div className='logo'>
+    <Link to={'/'} style={{ textDecoration: 'none' }}>
+        <h1 >MakesitanShop.</h1>
     </Link>
       </div>
     <div className='right-text-container'>

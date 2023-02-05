@@ -22,11 +22,16 @@ export const Checkout = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
   return (
-    <div>
+    <div className="Checkout">
       <OrderSummary cart={cart} />
-      <button className="confirm-order" onClick={() => PlaceOrderHandler(cart)}>
-        Place Order
-      </button>
+      <div className="confirm-container">
+        <button
+          className="confirm-order"
+          onClick={() => PlaceOrderHandler(cart)}
+        >
+          Place Order
+        </button>
+      </div>
     </div>
   );
 };
