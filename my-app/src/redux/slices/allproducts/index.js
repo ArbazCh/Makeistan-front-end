@@ -16,7 +16,7 @@ const allProductSlice = createSlice({
       state.loading = true;
     },
     [fetchAllData.fulfilled]: (state, action) => {
-      state.products = action.payload.products;
+      state.products = action.payload;
       state.loading = false;
     },
     [fetchAllData.rejected]: (state, action) => {

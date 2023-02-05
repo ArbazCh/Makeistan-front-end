@@ -19,7 +19,7 @@ export const CartItem = (product) => {
   const handleIncreaseCart = () => {
     dispatch(
       toggleCartQty({
-        id: cartItem?.id,
+        id: cartItem?.productId,
         type: "INC",
       })
     );
@@ -27,7 +27,7 @@ export const CartItem = (product) => {
   const handledecreaseCart = () => {
     dispatch(
       toggleCartQty({
-        id: cartItem.id,
+        id: cartItem.productId,
         type: "DEC",
       })
     );
@@ -40,16 +40,16 @@ export const CartItem = (product) => {
   return (
     <>
       <div className="cart-items">
-        <div className="cart-item" key={cartItem?.id}>
+        <div className="cart-item" key={cartItem?.productId}>
           <div className="cart-product">
-            <img src={cartItem.images[1]} alt={cartItem.title} />
+            <img src={cartItem.image} alt={cartItem.name} />
             <div>
-              <h3>{cartItem?.title}</h3>
+              <h3>{cartItem?.name}</h3>
               <p>{cartItem?.description}</p>
               <button onClick={() => handleReomveCart(cartItem)}>Remove</button>
             </div>
           </div>
-          <div className="cart-product-price">PKR {cartItem?.price}</div>
+          <div className="cart-product-price">PKR {cartItem?.unitPrice}</div>
           <div className="cart-product-quantity">
             <button
               onClick={() => {

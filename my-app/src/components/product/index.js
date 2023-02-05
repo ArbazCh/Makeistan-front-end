@@ -7,6 +7,7 @@ import "./product.css";
 
 export const Product = (item) => {
   const product = item.product;
+  // console.log(product);
   const cart = useSelector((state) => state.cart);
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ export const Product = (item) => {
   }, [cart, dispatch]);
 
   const addToCartHandler = (product) => {
-    let totalPrice = qty * product.price;
+    let totalPrice = qty * product.unitPrice;
     const tempProduct = {
       ...product,
       quantity: qty,
@@ -45,55 +46,58 @@ export const Product = (item) => {
 
   return (
     <>
-      <Link to={`/products/${product?.id}`}>
+      <Link
+        to={`/products/${product?.productId}`}
+        style={{ textDecoration: "none" }}
+      >
         <div className="product-container">
           <div className="product-left">
             <img
-              src="https://i.dummyjson.com/data/products/1/1.jpg" //{product?.images[1]}
-              alt={product?.title}
+              src={product?.image}
+              alt={product?.name}
               className="product-image"
             />
-            {
-              // console.log(
-              // "Images: ",
-              // product?.images[0])
-              // console.log("Count: ", product.id)
-            }
           </div>
           <div className="product-right">
-            <h1 className="product-title">{product?.title}</h1>
+            <h1 className="product-title">{product?.name}</h1>
             <div className="product-description">
               <p>{product?.description}</p>
-              <button
-                onClick={() => {
-                  increaseQty();
-                }}
-              >
-                +
-              </button>
-              <span> {qty} </span>
-              <button
-                onClick={() => {
-                  decreaseQty();
-                }}
-              >
-                -
-              </button>
             </div>
             <div className="product-price-container">
-              <p className="product-price">PKR {product?.price}</p>
+              <p className="product-price">PKR {product?.unitPrice}</p>
+            </div>
+
+            <div className="cart-buttons">
+              <div className="input-buttons">
+                <button
+                  onClick={() => {
+                    increaseQty();
+                  }}
+                >
+                  +
+                </button>
+                <span> {qty} </span>
+                <button
+                  onClick={() => {
+                    decreaseQty();
+                  }}
+                >
+                  -
+                </button>
+              </div>
+
+              <button
+                className="add-to-cart"
+                onClick={() => {
+                  addToCartHandler(product);
+                }}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>
       </Link>
-      <button
-        className="add-to-cart"
-        onClick={() => {
-          addToCartHandler(product);
-        }}
-      >
-        Add to Cart
-      </button>
     </>
   );
 };

@@ -9,11 +9,13 @@ export const OrderSummary = (cart) => {
       <div className="order-summary">
         <h2>Order Summary</h2>
         <h3 className="items-summary">
-          Select {totalItems} item(s) Price {totalAmount} PKR
+          {totalItems} item(s) Selected: Price {totalAmount} PKR
         </h3>
-        <h3 className="delivery-summary">Delivery Cost {deliveryCharge} PKR</h3>
+        <h3 className="delivery-summary">
+          Delivery Cost: {deliveryCharge} PKR
+        </h3>
         <h2 className="grand-total">
-          Grand Total {totalAmount + deliveryCharge} PKR
+          Grand Total: {totalAmount + deliveryCharge} PKR
         </h2>
       </div>
     </div>

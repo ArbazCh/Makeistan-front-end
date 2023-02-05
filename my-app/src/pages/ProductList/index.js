@@ -10,6 +10,7 @@ export const ProductList = () => {
   const { products, loading, error } = useSelector(
     (state) => state.allProducts
   );
+  // console.log("Al;: ", products);
   useEffect(() => {
     dispatch(fetchAllData());
   }, [dispatch]);

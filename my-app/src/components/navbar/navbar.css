@@ -1,16 +1,17 @@
+
 nav {
-    background-color: #868b86;
-    /* padding-left: 20px; */
-    /* padding-right: 20px; */
-    /* text-align: center; */
+    background-color: #d5dfd5;
     width: 100%;
     position: sticky;
     top: 0px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+ 
   }
-  .right-text-container{
+  .logo{
     display: flex;
-    /* float: right; */
-    /* margin-right: 10px; */
+    justify-content: left;
+  }
+  .logo h1{
+    color: black;
   }

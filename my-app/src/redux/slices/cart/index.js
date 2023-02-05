@@ -1,6 +1,11 @@
 // eslint-disable-next-line
+import { toast } from "react-toastify";
+// eslint-disable-next-line
 import { createSlice, current } from "@reduxjs/toolkit";
-import { fetchFromLocalStorage, storeInLocalStorage } from "../../../helpers";
+import {
+  fetchFromLocalStorage,
+  storeInLocalStorage,
+} from "../../../helpers/localStorage";
 
 const initialState = {
   cartItems: fetchFromLocalStorage(),
@@ -15,13 +20,14 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const tempItem = state.cartItems.find(
-        (item) => item.id === action.payload.id
+        (item) => item.productId === action.payload.productId
       );
       if (tempItem) {
         const tempCart = state.cartItems.map((item) => {
-          if (item.id === action.payload.id) {
+          // console.log("Itemd: ", current(item));
+          if (item.productId === action.payload.productId) {
             let newQty = item.quantity + action.payload.quantity;
-            let newTotalPrice = newQty * item.price;
+            let newTotalPrice = newQty * item.unitPrice;
             return { ...item, quantity: newQty, totalPrice: newTotalPrice };
           } else {
             return item;
@@ -29,31 +35,43 @@ export const cartSlice = createSlice({
         });
         state.cartItems = tempCart;
         storeInLocalStorage(state.cartItems);
+
+        toast.info(`Increased product quantity`, {
+          position: "bottom-left",
+        });
       } else {
         state.cartItems.push(action.payload);
         storeInLocalStorage(state.cartItems);
+
+        toast.success("Product Added to Cart", {
+          position: "bottom-left",
+        });
       }
     },
     removeFromCart(state, action) {
       const tempCart = state.cartItems.filter(
-        (item) => item.id !== action.payload.id
+        (item) => item.productId !== action.payload.productId
       );
       state.cartItems = tempCart;
       storeInLocalStorage(state.cartItems);
+
+      toast.success("Product Removed from Cart", {
+        position: "bottom-left",
+      });
     },
     toggleCartQty(state, action) {
       const tempCart = state.cartItems.map((item) => {
-        if (item.id === action.payload.id) {
+        if (item.productId === action.payload.id) {
           let tempQty = item.quantity;
           let tempTotalPrice = item.totalPrice;
           if (action.payload.type === "INC") {
             tempQty++;
-            tempTotalPrice = tempQty * item.price;
+            tempTotalPrice = tempQty * item.unitPrice;
           }
           if (action.payload.type === "DEC") {
             tempQty--;
             if (tempQty < 1) tempQty = 1;
-            tempTotalPrice = tempQty * item.price;
+            tempTotalPrice = tempQty * item.unitPrice;
           }
           return { ...item, quantity: tempQty, totalPrice: tempTotalPrice };
         } else {
@@ -67,6 +85,10 @@ export const cartSlice = createSlice({
     clearCart(state, action) {
       state.cartItems = [];
       storeInLocalStorage(state.cartItems);
+
+      toast.success("Cart Cleared ", {
+        position: "bottom-left",
+      });
     },
     getCartTotal(state) {
       state.totalAmount = state.cartItems.reduce((cartTotal, cartItem) => {
