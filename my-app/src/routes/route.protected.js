@@ -1,23 +1,14 @@
-import React from "react";
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useLocation, Navigate, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Protected = (props) => {
-  const { Component } = props;
-  // console.log("Protect: ",Component)
-  const navigate = useNavigate();
-  useEffect(() => {
-    let login = 1; //localStorage.getItem('token');
-    if (!login) {
-      navigate("/Login");
-    }
-  }, []);
+const Protect = () => {
+  const { token } = useSelector((state) => state.auth);
+  const location = useLocation();
 
-  return (
-    <>
-      <Component />
-    </>
+  return token ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
   );
 };
-
-export default Protected;
+export default Protect;

@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "../../redux/slices/cart";
 import { addToCart } from "../../redux/slices/cart";
 import "./product.css";
+// import { CartHelper } from "../../helpers/cartHelper";
 
 export const Product = (item) => {
   const product = item.product;
-  // console.log(product);
   const cart = useSelector((state) => state.cart);
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
