@@ -19,6 +19,7 @@ const authSlice = createSlice({
       localStorage.removeItem("token");
       toast.info("Logged out successfully");
     },
+    
   },
 
   extraReducers(builder) {

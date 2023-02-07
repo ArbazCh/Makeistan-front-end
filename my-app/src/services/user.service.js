@@ -9,5 +9,17 @@ const loginUserService = async (data) => {
     password,
   });
 };
+const registerUserService = async (data) => {
+  // console.log("data: ", data);
+  const { email, password, firstName, lastName, address } = data;
 
-export { loginUserService };
+  return await API.post("/register", {
+    email,
+    password,
+    firstName,
+     lastName,
+      address
+  });
+};
+
+export { loginUserService, registerUserService };

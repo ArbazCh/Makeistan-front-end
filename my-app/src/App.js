@@ -19,16 +19,12 @@ function App() {
         <Routes>
           <Route path="/Register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/game" element={<Home />} /> */}
+          <Route path="/game" element={<Home />} />
           {/* <Route  path='/' element={<SideDrawer />} /> */}
           <Route path="/ForgetP" element={<ForgetP />} />
           {/* <Route path="/Home" element={<Protected Component={Home} />} /> */}
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
-<<<<<<< HEAD
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/" element={<Home />} />
-=======
           {/* <Route
             path="/checkout"
             element={<Protected Component={Checkout} />}
@@ -39,7 +35,6 @@ function App() {
           </Route>
 
           <Route path="/" element={<ProductList />} />
->>>>>>> a079733ed29708bfbda705751265a173e99bc7d1
         </Routes>
       </BrowserRouter>
     </>

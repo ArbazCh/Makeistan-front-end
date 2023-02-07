@@ -1,10 +1,14 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { userRegister } from "../../../redux/slices/register/thunk";
 
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -17,27 +21,32 @@ const Signup = () => {
   
 
   const onSubmit = async (data) => {
-  
     
-    try {
+    // try {
 
-      const res = await fetch("http://localhost:3000/api/customer/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const resdata = res.json();
-      if (res.status === 422 || !resdata) {
-        window.alert("Invalid Registration ");
-        console.log(data)
-      } else {
-        window.alert("user successfully Registered");
-      }
-    } catch (error) {
-      console.error(error)
-    }
+    //   const res = await fetch("http://localhost:3000/api/customer/register", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   });
+    //   const resdata = res.json();
+    //   if (res.status === 422 || !resdata) {
+    //     window.alert("Invalid Registration ");
+    //     console.log(data)
+    //   } else {
+    //     window.alert("user successfully Registered");
+    //   }
+    // } catch (error) {
+    //   console.error(error)
+    // }
+
+    try{ 
+      dispatch(userRegister(data))
+      navigate('/Login')
+    }catch(error){
+    console.error("reg err: ", error.message)}
   };
 
   return (

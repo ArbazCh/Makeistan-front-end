@@ -53,5 +53,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Front of Makeistan, B2B platform using React.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

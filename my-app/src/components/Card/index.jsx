@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Grid, Skeleton } from '@mui/material';
-import { addToCart, getTotal } from "../../redux/slices/cart";
+import { addToCart, getCartTotal } from "../../redux/slices/cart";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ const Card = ( {item} ) => {
     const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
-    dispatch(getTotal());
+    dispatch(getCartTotal());
   }, [cart, dispatch]);
 
     const addToCartHandler = (product) => {
