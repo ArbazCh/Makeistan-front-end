@@ -1,11 +1,17 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "../../../style.css";
+// import { loginUserService } from '../../../services/user.service';
+import {useDispatch} from "react-redux"
+// import { setUser } from '../../../redux/slices/auth';
+import { userLogin } from '../../../redux/slices/auth/thunk';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
+  const dispatch=useDispatch()
   const navigate = useNavigate()
   const {
     register,
@@ -16,37 +22,13 @@ const Login = () => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}/;
 
-  const onSubmit = async (data) => {    
-    try {
-    
-      const res = await fetch("http://localhost:5000/api/customer/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          data
-        ),
-      });
-      const resdata = await res.json();
-      // console.log("BE Res",resdata)
-      if(resdata.jwtToken){
-        // localStorage.setItem("token", resdata.jwtToken);
-        document.cookie = (`token=${resdata.jwtToken}`);
-  
-        // toast.success("Logged in Successfully");
-        navigate('/')
-
-      } else if (resdata.status === 422 || !resdata) {
-        window.alert("Invalid Registration ");
-        console.log(data)
-        
-        toast.error(resdata);
-        
-      } 
-    } catch (error) {
-      console.error(error)
-    }
+  const onSubmit = async (data) => {  
+    try{
+      dispatch(userLogin(data))
+      navigate('/')
+    } catch(error){
+      console.error("Login Error: ",error.message)
+    } 
   };
   return (
     <>

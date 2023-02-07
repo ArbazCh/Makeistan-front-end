@@ -4,7 +4,7 @@ import "./checkout.css";
 import { OrderSummary } from "../../components/orderSummary";
 import { getCartTotal } from "../../redux/slices/cart";
 import { postOrder } from "../../redux/slices/order/thunk";
-// import Navbar from "../../components/navbar";
+import { Navbar } from "../../components/navbar";
 export const Checkout = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,17 +24,20 @@ export const Checkout = () => {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <div className="Checkout">
-      <OrderSummary cart={cart} />
-      <div className="confirm-container">
-        <button
-          className="confirm-order"
-          onClick={() => PlaceOrderHandler(cart)}
-        >
-          Place Order
-        </button>
+    <>
+      <Navbar />
+      <div className="Checkout">
+        <OrderSummary cart={cart} />
+        <div className="confirm-container">
+          <button
+            className="confirm-order"
+            onClick={() => PlaceOrderHandler(cart)}
+          >
+            Place Order
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

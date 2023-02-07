@@ -25,10 +25,15 @@ function App() {
           {/* <Route path="/Home" element={<Protected Component={Home} />} /> */}
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
-          <Route
+          {/* <Route
             path="/checkout"
             element={<Protected Component={Checkout} />}
-          />
+          /> */}
+
+          <Route element={<Protected />}>
+            <Route path="/checkout" element={<Checkout />} />
+          </Route>
+
           <Route path="/" element={<ProductList />} />
         </Routes>
       </BrowserRouter>
