@@ -7,11 +7,12 @@ import "../../../style.css";
 import {useDispatch} from "react-redux"
 // import { setUser } from '../../../redux/slices/auth';
 import { userLogin } from '../../../redux/slices/auth/thunk';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
   const dispatch=useDispatch()
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -21,8 +22,13 @@ const Login = () => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}/;
 
-  const onSubmit = async (data) => {    
+  const onSubmit = async (data) => {  
+    try{
       dispatch(userLogin(data))
+      navigate('/')
+    } catch(error){
+      console.error("Login Error: ",error.message)
+    } 
   };
   return (
     <>
