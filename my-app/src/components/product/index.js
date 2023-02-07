@@ -1,62 +1,103 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTotal } from "../../redux/slices/cart";
+import { getCartTotal } from "../../redux/slices/cart";
 import { addToCart } from "../../redux/slices/cart";
 import "./product.css";
+// import { CartHelper } from "../../helpers/cartHelper";
 
 export const Product = (item) => {
   const product = item.product;
-  // console.log("product: ", product);
-  const dispatch = useDispatch();
-  let qty;
   const cart = useSelector((state) => state.cart);
+  const [qty, setQty] = useState(1);
+  const dispatch = useDispatch();
+
+  const increaseQty = () => {
+    setQty((prevQty) => {
+      let newQty = prevQty + 1;
+      return newQty;
+    });
+  };
+
+  const decreaseQty = () => {
+    setQty((prevQty) => {
+      let newQty = prevQty - 1;
+      if (newQty < 1) {
+        newQty = 1;
+      }
+      return newQty;
+    });
+  };
 
   useEffect(() => {
-    dispatch(getTotal());
+    dispatch(getCartTotal());
   }, [cart, dispatch]);
 
   const addToCartHandler = (product) => {
+    let totalPrice = qty * product.unitPrice;
     const tempProduct = {
       ...product,
       quantity: qty,
+      totalPrice,
     };
     dispatch(addToCart(tempProduct));
+    setQty(1);
   };
 
   return (
     <>
-      <Link to="/cart">
-        {/* <button className="cart-icon">Cart {cart.totalItems}</button> */}
-      </Link>
-      <Link to={`/products/${product?.id}`}>
+      <Link
+        to={`/products/${product?.productId}`}
+        style={{ textDecoration: "none" }}
+      >
         <div className="product-container">
           <div className="product-left">
-            {/* <img
-              src={product?.images[0]}
-              alt={product?.title}
+            <img
+              src={product?.image}
+              alt={product?.name}
               className="product-image"
-            /> */}
+            />
           </div>
           <div className="product-right">
-            <h1 className="product-title">{product?.title}</h1>
+            <h1 className="product-title">{product?.name}</h1>
             <div className="product-description">
               <p>{product?.description}</p>
             </div>
             <div className="product-price-container">
-              <p className="product-price">PKR {product?.price}</p>
+              <p className="product-price">PKR {product?.unitPrice}</p>
+            </div>
+
+            <div className="cart-buttons">
+              <div className="input-buttons">
+                <button
+                  onClick={() => {
+                    increaseQty();
+                  }}
+                >
+                  +
+                </button>
+                <span> {qty} </span>
+                <button
+                  onClick={() => {
+                    decreaseQty();
+                  }}
+                >
+                  -
+                </button>
+              </div>
+
+              <button
+                className="add-to-cart"
+                onClick={() => {
+                  addToCartHandler(product);
+                }}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>
       </Link>
-      <button
-        className="add-to-cart"
-        onClick={() => {
-          addToCartHandler(product);
-        }}
-      >
-        Add to Cart
-      </button>
     </>
   );
 };

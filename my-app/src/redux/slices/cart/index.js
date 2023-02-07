@@ -1,77 +1,109 @@
-import { createSlice } from "@reduxjs/toolkit";
+// eslint-disable-next-line
+import { toast } from "react-toastify";
+// eslint-disable-next-line
+import { createSlice, current } from "@reduxjs/toolkit";
+import {
+  fetchFromLocalStorage,
+  storeInLocalStorage,
+} from "../../../helpers/localStorage";
 
 const initialState = {
-  cartItems: localStorage.getItem("cartItems")
-    ? JSON.parse(localStorage.getItem("cartItems"))
-    : [],
+  cartItems: fetchFromLocalStorage(),
   totalItems: 0,
   totalAmount: 0,
+  deliveryCharge: 1000,
 };
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
-
   reducers: {
     addToCart(state, action) {
-      // console.log("In the cart", action.payload);
-      const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+      const tempItem = state.cartItems.find(
+        (item) => item.productId === action.payload.productId
       );
-      if (itemIndex >= 0) {
-        state.cartItems[itemIndex].quantity += 1;
+      if (tempItem) {
+        const tempCart = state.cartItems.map((item) => {
+          // console.log("Itemd: ", current(item));
+          if (item.productId === action.payload.productId) {
+            let newQty = item.quantity + action.payload.quantity;
+            let newTotalPrice = newQty * item.unitPrice;
+            return { ...item, quantity: newQty, totalPrice: newTotalPrice };
+          } else {
+            return item;
+          }
+        });
+        state.cartItems = tempCart;
+        storeInLocalStorage(state.cartItems);
+
+        toast.info(`Increased product quantity`, {
+          position: "bottom-left",
+        });
       } else {
-        const tempProduct = { ...action.payload, quantity: 1 };
-        state.cartItems.push(tempProduct);
+        state.cartItems.push(action.payload);
+        storeInLocalStorage(state.cartItems);
+
+        toast.success("Product Added to Cart", {
+          position: "bottom-left",
+        });
       }
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
     removeFromCart(state, action) {
-      const nextCartItem = state.cartItems.filter(
-        (cartItem) => cartItem.id !== action.payload.id
+      const tempCart = state.cartItems.filter(
+        (item) => item.productId !== action.payload.productId
       );
-      state.cartItems = nextCartItem;
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      state.cartItems = tempCart;
+      storeInLocalStorage(state.cartItems);
+
+      toast.success("Product Removed from Cart", {
+        position: "bottom-left",
+      });
     },
-    decreaseCart(state, action) {
-      const itemIndex = state.cartItems.findIndex(
-        (cartItem) => cartItem.id === action.payload.id
-      );
-      if (state.cartItems[itemIndex].quantity > 1) {
-        state.cartItems[itemIndex].quantity -= 1;
-      } else if (state.cartItems[itemIndex].quantity === 1) {
-        const nextCartItem = state.cartItems.filter(
-          (cartItem) => cartItem.id !== action.payload.id
-        );
-        state.cartItems = nextCartItem;
-      }
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    toggleCartQty(state, action) {
+      const tempCart = state.cartItems.map((item) => {
+        if (item.productId === action.payload.id) {
+          let tempQty = item.quantity;
+          let tempTotalPrice = item.totalPrice;
+          if (action.payload.type === "INC") {
+            tempQty++;
+            tempTotalPrice = tempQty * item.unitPrice;
+          }
+          if (action.payload.type === "DEC") {
+            tempQty--;
+            if (tempQty < 1) tempQty = 1;
+            tempTotalPrice = tempQty * item.unitPrice;
+          }
+          return { ...item, quantity: tempQty, totalPrice: tempTotalPrice };
+        } else {
+          return item;
+        }
+      });
+      state.cartItems = tempCart;
+      storeInLocalStorage(state.cartItems);
     },
+
     clearCart(state, action) {
       state.cartItems = [];
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      storeInLocalStorage(state.cartItems);
+
+      toast.success("Cart Cleared ", {
+        position: "bottom-left",
+      });
     },
-    getTotal(state, action) {
-      let { total, quantity } = state.cartItems.reduce(
-        (cartTotal, cartItem) => {
-          const { price, quantity } = cartItem;
-          const itemTotal = price * quantity;
-          cartTotal.total += itemTotal;
-          cartTotal.quantity += quantity;
-          // console.log("CartTotal: ", cartTotal);
-          return cartTotal;
-        },
-        {
-          total: 0,
-          quantity: 0,
-        }
-      );
-      state.totalAmount = total;
-      state.totalItems = quantity;
+    getCartTotal(state) {
+      state.totalAmount = state.cartItems.reduce((cartTotal, cartItem) => {
+        return (cartTotal += cartItem.totalPrice);
+      }, 0);
+      state.totalItems = state.cartItems.length;
     },
   },
 });
 
-export const { addToCart, removeFromCart, decreaseCart, clearCart, getTotal } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  clearCart,
+  toggleCartQty,
+  getCartTotal,
+} = cartSlice.actions;
 export default cartSlice.reducer;

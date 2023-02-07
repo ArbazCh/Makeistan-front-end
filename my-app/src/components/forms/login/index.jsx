@@ -1,11 +1,17 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "../../../style.css";
+// import { loginUserService } from '../../../services/user.service';
+import {useDispatch} from "react-redux"
+// import { setUser } from '../../../redux/slices/auth';
+import { userLogin } from '../../../redux/slices/auth/thunk';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
+  const dispatch=useDispatch()
   const navigate = useNavigate()
   const {
     register,
@@ -16,6 +22,7 @@ const Login = () => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}/;
 
+<<<<<<< HEAD
   const onSubmit = async (data) => {    
     try {
     
@@ -47,6 +54,15 @@ const Login = () => {
     } catch (error) {
       console.error(error)
     }
+=======
+  const onSubmit = async (data) => {  
+    try{
+      dispatch(userLogin(data))
+      navigate('/')
+    } catch(error){
+      console.error("Login Error: ",error.message)
+    } 
+>>>>>>> a079733ed29708bfbda705751265a173e99bc7d1
   };
   return (
     <>

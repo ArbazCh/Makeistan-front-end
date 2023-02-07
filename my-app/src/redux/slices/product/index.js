@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchProduct } from "./thunk";
 const initialState = {
-  product: [],
+  product: {},
   error: null,
-  status: "idle",
+  loading: false,
 };
 export const productSlice = createSlice({
   name: "product",
@@ -11,14 +11,15 @@ export const productSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchProduct.pending, (state, action) => {
-        state.status = "loading";
+        state.loading = true;
       })
       .addCase(fetchProduct.rejected, (state, action) => {
-        state.status = "failed";
+        state.loading = false;
         state.error = state.error.message;
       })
       .addCase(fetchProduct.fulfilled, (state, action) => {
         state.product = action.payload;
+        state.loading = false;
       });
   },
 });

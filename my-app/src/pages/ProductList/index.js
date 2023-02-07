@@ -13,9 +13,6 @@ export const ProductList = () => {
     (state) => state.allProducts
   );
 
-    // console.log('first> ', useSelector(
-    //   (state) => state.allProducts
-    // ))
 
   useEffect(() => {
     dispatch(fetchAllData());

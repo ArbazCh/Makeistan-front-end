@@ -4,30 +4,42 @@ import { Cart } from "./pages/cart";
 import { Checkout } from "./pages/checkout";
 import Register from "../src/components/forms/register/index";
 import Login from "../src/components/forms/login/index";
-import Protected from "../src/components/protectedroutes/index";
-import ForgetP from "./components/forms/forgetpassword"
-
+import ForgetP from "./components/forms/forgetpassword";
 import Home from "../src/pages/home/index";
-// import Protected from "../src/components/protectedroutes/index";
+import Protected from "../src/routes/route.protected";
 import { ProductList } from "../src/pages/ProductList";
-
-// import { ProtectedRoute } from "./routes/route.protected";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <ToastContainer />
         <Routes>
           <Route path="/Register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           {/* <Route path="/game" element={<Home />} /> */}
           {/* <Route  path='/' element={<SideDrawer />} /> */}
           <Route path="/ForgetP" element={<ForgetP />} />
-          {/* <Route  path='/Home' element={ <Protected Component = {Home} />}/> */}
+          {/* <Route path="/Home" element={<Protected Component={Home} />} /> */}
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+<<<<<<< HEAD
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/" element={<Home />} />
+=======
+          {/* <Route
+            path="/checkout"
+            element={<Protected Component={Checkout} />}
+          /> */}
+
+          <Route element={<Protected />}>
+            <Route path="/checkout" element={<Checkout />} />
+          </Route>
+
+          <Route path="/" element={<ProductList />} />
+>>>>>>> a079733ed29708bfbda705751265a173e99bc7d1
         </Routes>
       </BrowserRouter>
     </>

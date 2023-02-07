@@ -1,7 +1,8 @@
 import API from "../api/axios.config";
 
 const postOrderService = async (quantity, totalAmount) => {
-  return await API.post("/create", {
+  // console.log(totalAmount, deliveryCharge);
+  return await API.post("/orders/create", {
     paymentId: "1",
     date: "2020-03-12",
     orderStatus: "pending",
