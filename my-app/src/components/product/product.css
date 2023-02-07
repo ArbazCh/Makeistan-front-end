@@ -55,9 +55,9 @@
   }
   
   .add-to-cart {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    margin-top: -140px;
+    padding: 8px 16px;
+    background-color: #824caf;
+    margin-top: -25px;
     margin-right: 200px;
     float: right;
     color: white;
@@ -70,7 +70,7 @@
     margin-top:19px;
     margin-right: 20px;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #824caf;
     color: white;
     border: none;
     cursor: pointer;
@@ -78,6 +78,7 @@
   }
   
   .add-to-cart:hover {
-    background-color: #3e8e41;
+    background-color: #824caf;
+    color: #fff;
   }
   

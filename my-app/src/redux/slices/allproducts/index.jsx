@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import fetchAllData from './thunk'
+import {fetchAllData} from './thunk'
 
 const initialState = {
   products: [],
@@ -31,7 +31,8 @@ const allProductSlice = createSlice({
       state.loading = true;
     },
     [fetchAllData.fulfilled]: (state, action) => {
-      state.products = action.payload.products;
+      // console.log('first>' , action.payload)
+      state.products = action.payload;
       state.loading = false;
     },
     [fetchAllData.rejected]: (state, action) => {

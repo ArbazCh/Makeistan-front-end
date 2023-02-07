@@ -19,7 +19,7 @@ const Login = () => {
   const onSubmit = async (data) => {    
     try {
     
-      const res = await fetch("http://localhost:5000/api/customer/login", {
+      const res = await fetch("http://localhost:3000/api/customer/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const Login = () => {
       const resdata = await res.json();
       // console.log("BE Res",resdata)
       if(resdata.jwtToken){
-        // localStorage.setItem("token", resdata.jwtToken);
+        localStorage.setItem("token", resdata.jwtToken);
         document.cookie = (`token=${resdata.jwtToken}`);
   
         // toast.success("Logged in Successfully");

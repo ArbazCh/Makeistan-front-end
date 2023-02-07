@@ -1,19 +1,13 @@
 import API from "../api/axios.config";
-<<<<<<< HEAD
-const  getAllProductService = async () =>{
-
-    return await API.get(`/products`)
-}
-
-export { getAllProductService};
-=======
 
 const getProductService = async (id) => {
-  return await API.get(`/products/${id}`);
+  return await API.get(`/product/${id}`);
 };
 const getAllProductService = async () => {
-  return await API.get("/products");
+  // console.log('here')
+   const result=await API.get("/product");
+  //  console.log('here',result)
+   return result
 };
 
 export { getProductService, getAllProductService };
->>>>>>> 0eb3a4fb083303a4fda9a090a49062b692f4f7c5

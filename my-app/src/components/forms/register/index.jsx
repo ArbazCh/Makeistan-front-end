@@ -21,7 +21,7 @@ const Signup = () => {
     
     try {
 
-      const res = await fetch("http://localhost:5000/api/customer/register", {
+      const res = await fetch("http://localhost:3000/api/customer/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const Signup = () => {
         window.alert("Invalid Registration ");
         console.log(data)
       } else {
-        window.alert("Registered");
+        window.alert("user successfully Registered");
       }
     } catch (error) {
       console.error(error)
