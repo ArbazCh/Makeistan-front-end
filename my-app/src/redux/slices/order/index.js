@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { response } from "express";
 import { toast } from "react-toastify";
 import { postOrder } from "./thunk";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const initialState = {
   order: false,
@@ -16,15 +17,18 @@ export const ordertSlice = createSlice({
     builder
       .addCase(postOrder.pending, (state, action) => {
         state.loading = true;
+        // toast.loading("Loading...", { position: "top-center" });
       })
       .addCase(postOrder.rejected, (state, action) => {
         state.loading = false;
         state.error = state.error.message;
-        toast.success("Something went wrong. Please try again later", {
+        toast.error("Something went wrong. Please try again later", {
           position: "top-center",
         });
       })
       .addCase(postOrder.fulfilled, (state, action) => {
+        // console.log("action: ", action);
+        // console.log("res: ", response);
         state.loading = false;
         state.order = true;
         toast.success("Your order has been placed. Thank you for Shoping.", {

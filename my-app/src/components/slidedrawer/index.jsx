@@ -7,6 +7,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 // import Typography from '@mui/material/Typography';
+import Badge from '@mui/material/Badge';
 import LoginIcon from '@mui/icons-material/Login';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -17,17 +18,26 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+// import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
 import CheckroomIcon from '@mui/icons-material/Checkroom';
 import EarbudsIcon from '@mui/icons-material/Earbuds';
 import { Grid } from '@mui/material';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './style.css'
+import { useSelector } from 'react-redux';
 import Searchfield from '../searchBar';
-import { display } from '@mui/system';
+// import { display } from '@mui/system';
 import { Link } from 'react-router-dom';
 const drawerWidth = 240;
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: -3,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '3px 7px',
+  },
+}));
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -101,7 +111,7 @@ export default function PersistentDrawerLeft() {
     { name: "Others", icon: <EarbudsIcon/> },
     
   ];
-
+  const {totalItems}=useSelector((state) => state.cart);
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -128,11 +138,12 @@ export default function PersistentDrawerLeft() {
             <Grid item xs={2} md={2}>
              
               <IconButton color="#000" aria-label="add to shopping cart" style={{fontSize:'16px'}} >
-                    Cart{0}
-               <AddShoppingCartIcon />
+              <StyledBadge badgeContent={totalItems} color="secondary">
+        <ShoppingCartIcon />
+      </StyledBadge>
               </IconButton>
               <Link to='/Login' style={{textDecoration:'none'}}>
-                 <IconButton style={{fontSize:'16px'}}>
+                 <IconButton style={{fontSize:'16px', color:'#000'}}>
                   Login
                   <LoginIcon />
                  </IconButton>

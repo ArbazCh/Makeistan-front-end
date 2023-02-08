@@ -7,7 +7,6 @@ import Login from "../src/components/forms/login/index";
 import ForgetP from "./components/forms/forgetpassword";
 import Home from "../src/pages/home/index";
 import Protected from "../src/routes/route.protected";
-import { ProductList } from "../src/pages/ProductList";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,11 +21,10 @@ function App() {
           <Route path="/ForgetP" element={<ForgetP />} />
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/" element={<ProductList />} />
-          {/* Protect Routes */}
           <Route element={<Protected />}>
             <Route path="/checkout" element={<Checkout />} />
           </Route>
+          <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </>
