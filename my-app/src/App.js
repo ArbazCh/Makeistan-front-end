@@ -19,22 +19,14 @@ function App() {
         <Routes>
           <Route path="/Register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/game" element={<Home />} />
-          {/* <Route  path='/' element={<SideDrawer />} /> */}
           <Route path="/ForgetP" element={<ForgetP />} />
-          {/* <Route path="/Home" element={<Protected Component={Home} />} /> */}
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
-          {/* <Route
-            path="/checkout"
-            element={<Protected Component={Checkout} />}
-          /> */}
-
+          <Route path="/" element={<ProductList />} />
+          {/* Protect Routes */}
           <Route element={<Protected />}>
             <Route path="/checkout" element={<Checkout />} />
           </Route>
-
-          <Route path="/" element={<ProductList />} />
         </Routes>
       </BrowserRouter>
     </>
