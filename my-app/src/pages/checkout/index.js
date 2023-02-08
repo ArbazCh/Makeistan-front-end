@@ -12,7 +12,7 @@ export const Checkout = () => {
   }, [dispatch]);
 
   const cart = useSelector((state) => state.cart);
-  const { error, loading } = useSelector((state) => state.order);
+  const { error, loading, order } = useSelector((state) => state.order);
   const quantity = cart.totalItems;
   const totalAmount = cart.totalAmount + cart.deliveryCharge;
 

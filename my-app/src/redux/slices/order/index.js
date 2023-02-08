@@ -4,7 +4,7 @@ import { postOrder } from "./thunk";
 import { useNavigate } from "react-router-dom";
 
 const initialState = {
-  order: {},
+  order: false,
   error: null,
   loading: false,
 };
@@ -26,6 +26,7 @@ export const ordertSlice = createSlice({
       })
       .addCase(postOrder.fulfilled, (state, action) => {
         state.loading = false;
+        state.order = true;
         toast.success("Your order has been placed. Thank you for Shoping.", {
           position: "top-center",
         });
