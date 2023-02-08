@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const Protect = () => {
   const { token } = useSelector((state) => state.auth);
   const location = useLocation();
-  console.log("Location: ", location);
+  // console.log("Location: ", location);
 
   return token ? (
     <Outlet />
