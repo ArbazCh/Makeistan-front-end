@@ -91,6 +91,7 @@ export const Product = (item) => {
                 onClick={() => {
                   addToCartHandler(product);
                 }}
+                style={{marginTop:'0px'}}
               >
                 Add to Cart
               </button>
