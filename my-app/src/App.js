@@ -25,10 +25,6 @@ function App() {
           {/* <Route path="/Home" element={<Protected Component={Home} />} /> */}
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
-<<<<<<< HEAD
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/" element={<Home />} />
-=======
           {/* <Route
             path="/checkout"
             element={<Protected Component={Checkout} />}
@@ -38,8 +34,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
           </Route>
 
-          <Route path="/" element={<ProductList />} />
->>>>>>> a079733ed29708bfbda705751265a173e99bc7d1
+          <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </>

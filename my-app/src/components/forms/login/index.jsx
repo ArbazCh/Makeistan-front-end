@@ -22,39 +22,6 @@ const Login = () => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}/;
 
-<<<<<<< HEAD
-  const onSubmit = async (data) => {    
-    try {
-    
-      const res = await fetch("http://localhost:3000/api/customer/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          data
-        ),
-      });
-      const resdata = await res.json();
-      // console.log("BE Res",resdata)
-      if(resdata.jwtToken){
-        localStorage.setItem("token", resdata.jwtToken);
-        document.cookie = (`token=${resdata.jwtToken}`);
-  
-        // toast.success("Logged in Successfully");
-        navigate('/')
-
-      } else if (resdata.status === 422 || !resdata) {
-        window.alert("Invalid Registration ");
-        console.log(data)
-        
-        toast.error(resdata);
-        
-      } 
-    } catch (error) {
-      console.error(error)
-    }
-=======
   const onSubmit = async (data) => {  
     try{
       dispatch(userLogin(data))
@@ -62,7 +29,6 @@ const Login = () => {
     } catch(error){
       console.error("Login Error: ",error.message)
     } 
->>>>>>> a079733ed29708bfbda705751265a173e99bc7d1
   };
   return (
     <>
