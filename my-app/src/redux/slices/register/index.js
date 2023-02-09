@@ -27,7 +27,7 @@ const regSlice = createSlice({
         .addCase(
             userRegister.rejected,  (state, action) =>{
                 state.error = state.error.message
-                toast.error(" Registered Unsuccessful ");
+                toast.error("  Unsuccessful registration ");
 
             }
         )

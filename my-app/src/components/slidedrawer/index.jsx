@@ -29,15 +29,8 @@ import { useSelector } from 'react-redux';
 import Searchfield from '../searchBar';
 // import { display } from '@mui/system';
 import { Link } from 'react-router-dom';
+import MainBar from '../mainBar';
 const drawerWidth = 240;
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    right: -3,
-    top: -3,
-    border: `2px solid ${theme.palette.background.paper}`,
-    padding: '3px 7px',
-  },
-}));
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -78,9 +71,7 @@ const AppBar = styled(MuiAppBar, {
 }));
 const myAppBarstyle = {
   backgroundColor: "#fff",
-   
-   
-};
+  };
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -111,7 +102,6 @@ export default function PersistentDrawerLeft() {
     { name: "Others", icon: <EarbudsIcon/> },
     
   ];
-  const {totalItems}=useSelector((state) => state.cart);
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -132,29 +122,8 @@ export default function PersistentDrawerLeft() {
               </IconButton>
              
             </Grid>
-            <Grid item xs={6} md={8}>
-             <Searchfield />
-            </Grid>
-            <Grid item xs={2} md={2}>
-             
-              <IconButton color="#000" aria-label="add to shopping cart" style={{fontSize:'16px'}} >
-              <StyledBadge badgeContent={totalItems} color="secondary">
-        <ShoppingCartIcon />
-      </StyledBadge>
-              </IconButton>
-              <Link to='/Login' style={{textDecoration:'none'}}>
-                 <IconButton style={{fontSize:'16px', color:'#000'}}>
-                  Login
-                  <LoginIcon />
-                 </IconButton>
-              </Link>
-             
-            </Grid>
+            <MainBar />
           </Grid>
-          
-            
-          
-            
         </Toolbar>
       </AppBar>
       <Drawer
@@ -190,19 +159,6 @@ export default function PersistentDrawerLeft() {
             </ListItem>
           ))}
         </List>
-        {/* <Divider /> */}
-        {/* <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
