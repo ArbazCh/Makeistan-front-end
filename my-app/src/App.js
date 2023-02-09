@@ -21,9 +21,11 @@ function App() {
           <Route path="/ForgetP" element={<ForgetP />} />
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+
           <Route element={<Protected />}>
             <Route path="/checkout" element={<Checkout />} />
           </Route>
+
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>

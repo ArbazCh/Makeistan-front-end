@@ -40,22 +40,3 @@ export const Checkout = () => {
     </>
   );
 };
-
-// try {
-//   let response = await postOrderService(quantity, totalAmount);
-//   response = await response.data;
-
-//   if (response.body) {
-//     localStorage.removeItem("cartItems");
-//     toast.success("Your order has been placed. Thank you for Shoping.", {
-//       position: "top-center",
-//     });
-//   } else {
-//     toast.success("Your order has been placed. Thank you for Shoping.", {
-//       position: "top-center",
-//     });
-//     //Navigate to Error Page for Try Again
-//   }
-// } catch (err) {
-//   console.error(err.message);
-// }

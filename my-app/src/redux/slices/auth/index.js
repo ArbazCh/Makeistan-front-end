@@ -27,7 +27,7 @@ const authSlice = createSlice({
         const { jwtToken, user } = action.payload;
         state.user = user;
         state.token = jwtToken;
-        localStorage.setItem("token", state.token);
+        localStorage.setItem("token", JSON.stringify(state.token));
         toast.success("Login Successful");
       })
       .addCase(userLogin.rejected, (state, action) => {
