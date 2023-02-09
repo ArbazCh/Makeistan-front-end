@@ -13,7 +13,7 @@ const Home = () => {
     <SideDrawer />
     <li><Link to="/Login">login</Link></li>
     <Swiper />
-    <ProductList />
+    {/* <ProductList /> */}
     {/* <Card /> */}
     <Footer />
   </>

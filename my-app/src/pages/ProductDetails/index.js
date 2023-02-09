@@ -5,6 +5,7 @@ import { fetchProduct } from "../../redux/slices/product/thunk";
 import "../../components/product/product.css";
 import { Product } from "../../components/product";
 import { Navbar } from "../../components/navbar";
+import SideDrawer from "../../components/slidedrawer"
 
 export const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,8 @@ export const ProductDetails = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      <SideDrawer />
       <Product product={product} />
     </>
   );
