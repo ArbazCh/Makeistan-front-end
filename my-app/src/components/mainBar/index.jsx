@@ -10,6 +10,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useSelector, useDispatch } from "react-redux";
 import LoginIcon from "@mui/icons-material/Login";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { removeUser } from "../../redux/slices/auth";
+
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
@@ -29,15 +31,17 @@ const MainBar = () => {
         <Searchfield />
       </Grid>
       <Grid item xs={2} md={2}>
-        <IconButton
-          color="#000"
-          aria-label="add to shopping cart"
-          style={{ fontSize: "16px" }}
-        >
-          <StyledBadge badgeContent={totalItems} color="secondary">
-            <ShoppingCartIcon />
-          </StyledBadge>
-        </IconButton>
+        <Link to={"/cart"}>
+          <IconButton
+            color="#000"
+            aria-label="add to shopping cart"
+            style={{ fontSize: "16px" }}
+          >
+            <StyledBadge badgeContent={totalItems} color="secondary">
+              <ShoppingCartIcon />
+            </StyledBadge>
+          </IconButton>
+        </Link>
         {token ? (
           <>
             <Link to={"/login"} style={{ textDecoration: "none" }}>

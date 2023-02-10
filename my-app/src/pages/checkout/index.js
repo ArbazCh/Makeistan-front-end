@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./checkout.css";
-import { OrderSummary } from "../../components/orderSummary";
 import { getCartTotal } from "../../redux/slices/cart";
 import { postOrder } from "../../redux/slices/order/thunk";
-import { Navbar } from "../../components/navbar";
+// import { Navbar } from "../../components/navbar";
+import { useNavigate } from "react-router-dom";
+import { OrderSummary, SlideDrawer } from "../../components";
+
 export const Checkout = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -12,12 +14,16 @@ export const Checkout = () => {
   }, [dispatch]);
 
   const cart = useSelector((state) => state.cart);
-  const { error, loading, order } = useSelector((state) => state.order);
+  const { error, loading } = useSelector((state) => state.order);
   const quantity = cart.totalItems;
   const totalAmount = cart.totalAmount + cart.deliveryCharge;
+  const navigate = useNavigate();
 
   const PlaceOrderHandler = async () => {
-    dispatch(postOrder({ quantity, totalAmount }));
+    const response = await dispatch(postOrder({ quantity, totalAmount }));
+    const { status } = response.payload;
+    if (status === 200) navigate("/");
+    if (status === 401) navigate("/login");
   };
 
   if (loading) return <p>Loading...</p>;
@@ -25,7 +31,8 @@ export const Checkout = () => {
 
   return (
     <>
-      <Navbar />
+      <SlideDrawer />
+      {/* <Navbar /> */}
       <div className="Checkout">
         <OrderSummary cart={cart} />
         <div className="confirm-container">
@@ -40,22 +47,3 @@ export const Checkout = () => {
     </>
   );
 };
-
-// try {
-//   let response = await postOrderService(quantity, totalAmount);
-//   response = await response.data;
-
-//   if (response.body) {
-//     localStorage.removeItem("cartItems");
-//     toast.success("Your order has been placed. Thank you for Shoping.", {
-//       position: "top-center",
-//     });
-//   } else {
-//     toast.success("Your order has been placed. Thank you for Shoping.", {
-//       position: "top-center",
-//     });
-//     //Navigate to Error Page for Try Again
-//   }
-// } catch (err) {
-//   console.error(err.message);
-// }

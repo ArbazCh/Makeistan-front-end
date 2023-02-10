@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { userLogin } from "./thunk";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const initialState = {
   user: null,
@@ -38,5 +38,5 @@ const authSlice = createSlice({
       });
   },
 });
-export const { setUser, removeUser } = authSlice.actions;
+export const { removeUser } = authSlice.actions;
 export default authSlice.reducer;

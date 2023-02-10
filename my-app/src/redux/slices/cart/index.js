@@ -24,7 +24,6 @@ export const cartSlice = createSlice({
       );
       if (tempItem) {
         const tempCart = state.cartItems.map((item) => {
-          // console.log("Itemd: ", current(item));
           if (item.productId === action.payload.productId) {
             let newQty = item.quantity + action.payload.quantity;
             let newTotalPrice = newQty * item.unitPrice;

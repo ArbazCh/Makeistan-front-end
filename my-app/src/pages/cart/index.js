@@ -2,10 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./cart.css";
-import { CartItem } from "../../components/cartItem";
 import { clearCart, getCartTotal } from "../../redux/slices/cart";
-import { Navbar } from "../../components/navbar";
-
+import { CartItem, SlideDrawer } from "../../components";
+// import { Navbar } from "../../components/navbar";
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
   // console.log("cart: ", cart);
@@ -20,7 +19,8 @@ export const Cart = () => {
 
   return (
     <>
-      <Navbar />
+      <SlideDrawer />
+      {/* <Navbar /> */}
       <div className="cart-container">
         <h2>Shopping Cart</h2>
         {cart.cartItems.length === 0 ? (

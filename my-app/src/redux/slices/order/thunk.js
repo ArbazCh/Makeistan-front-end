@@ -2,14 +2,22 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import postOrderService from "../../../services/order.service";
 
 export const postOrder = createAsyncThunk(
-  "order/postOrder",
+  "meals/all",
   async ({ quantity, totalAmount }) => {
-    // console.log("Thunk1: ", quantity, "Thunk2: ", totalAmount);
-    try {
-      const response = await postOrderService(quantity, totalAmount);
-      return await response.data;
-    } catch (error) {
-      console.error(error.message);
-    }
+    const response = await postOrderService(quantity, totalAmount);
+    return response.data;
   }
 );
+
+// export const postOrder = createAsyncThunk(
+//   "order/postOrder",
+//   async ({ quantity, totalAmount }) => {
+//     try {
+//       const response = await postOrderService(quantity, totalAmount);
+//       // console.log("res: ", response);
+//       return await response.data;
+//     } catch (error) {
+//       console.error(error.message);
+//     }
+//   }
+// );

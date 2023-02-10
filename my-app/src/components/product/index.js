@@ -6,7 +6,7 @@ import { addToCart } from "../../redux/slices/cart";
 import "./product.css";
 // import { CartHelper } from "../../helpers/cartHelper";
 
-export const Product = (item) => {
+const Product = (item) => {
   const product = item.product;
   const cart = useSelector((state) => state.cart);
   const [qty, setQty] = useState(1);
@@ -91,7 +91,7 @@ export const Product = (item) => {
                 onClick={() => {
                   addToCartHandler(product);
                 }}
-                style={{marginTop:'0px'}}
+                style={{ marginTop: "0px" }}
               >
                 Add to Cart
               </button>
@@ -102,3 +102,4 @@ export const Product = (item) => {
     </>
   );
 };
+export default Product;

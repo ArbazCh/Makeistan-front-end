@@ -1,6 +1,6 @@
 import React from "react";
 
-export const OrderSummary = (cart) => {
+const OrderSummary = (cart) => {
   const { totalAmount, totalItems, deliveryCharge } = cart.cart;
 
   return (
@@ -21,3 +21,4 @@ export const OrderSummary = (cart) => {
     </div>
   );
 };
+export default OrderSummary;

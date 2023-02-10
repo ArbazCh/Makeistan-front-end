@@ -86,10 +86,14 @@ code {
   z-index: 9;
   margin-right: 10%;
   transition: all 1s ease 0s;
-  transform: scale(.8);
+  /* transform: scale(.8); */
   opacity: 0;
+  height: 100%;
 }
-
+.swiper-images{
+  margin: 2rem 0;
+  height: 26rem;
+}
 .swiper-slide.swiper-slide-active .swiper-img1,
 .swiper-slide.swiper-slide-active .swiper-img2,
 .swiper-slide.swiper-slide-active .swiper-img3{
@@ -99,7 +103,7 @@ code {
 }
 .slider-content{
   
-    margin-top: 25%;
+    margin-top: 5%;
     margin-left: 8%;
 }
 

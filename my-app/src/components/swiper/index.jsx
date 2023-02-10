@@ -3,17 +3,20 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper";
 import "swiper/css/navigation";
-import mern1 from "../images/mern1.png";
-import mern2 from "../images/mern2.png";
-import mern3 from "../images/mern3.jpg";
+import mern1 from "../../assets/images/mern1.png";
+import mern2 from "../../assets/images/mern2.png";
+import mern3 from "../../assets/images/mern3.jpg";
+
 // import Mainbutton from "./Mainbtn";
 import './Style.css';
 
 // Import Swiper styles
 import "swiper/css";
 
-export default () => {
+const SwiperComponent = () => {
   return (
+    <div>
+
     <Swiper
       spaceBetween={50}
       slidesPerView={1}
@@ -22,9 +25,8 @@ export default () => {
         delay: 2500,
         disableOnInteraction: false,
       }}
+      style={{ height:'70vh'}}
       modules={[Navigation, Autoplay]}
-      // onSlideChange={() => console.log("slide change")}
-      // onSwiper={(swiper) => console.log(swiper)}
     >
       <SwiperSlide>
         <div className=" swiper-img1 ">
@@ -94,5 +96,7 @@ export default () => {
         </div>
       </SwiperSlide>
     </Swiper>
+    </div>
   );
 };
+export default SwiperComponent
