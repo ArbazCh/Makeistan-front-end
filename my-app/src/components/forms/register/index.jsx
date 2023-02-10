@@ -21,43 +21,6 @@ const Signup = () => {
   
 
   const onSubmit = async (data) => {
-    
-    // try {
-
-    //   const res = await fetch("http://localhost:5000/api/customer/register", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
-    //   const resdata = res.json();
-    //   if (res.status === 422 || !resdata) {
-    //     window.alert("Invalid Registration ");
-    //     console.log(data)
-    //   } else {
-    //     window.alert("user successfully Registered");
-    //   }
-    // } catch (error) {
-    //   console.error(error)
-    // }
-    //   const res = await fetch("http://localhost:3000/api/customer/register", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
-    //   const resdata = res.json();
-    //   if (res.status === 422 || !resdata) {
-    //     window.alert("Invalid Registration ");
-    //     console.log(data)
-    //   } else {
-    //     window.alert("user successfully Registered");
-    //   }
-    // } catch (error) {
-    //   console.error(error)
-    // }
 
     try{ 
       dispatch(userRegister(data))
@@ -198,3 +161,46 @@ const Signup = () => {
 };
 
 export default Signup;
+
+
+
+
+
+
+
+    // try {
+
+    //   const res = await fetch("http://localhost:5000/api/customer/register", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   });
+    //   const resdata = res.json();
+    //   if (res.status === 422 || !resdata) {
+    //     window.alert("Invalid Registration ");
+    //     console.log(data)
+    //   } else {
+    //     window.alert("user successfully Registered");
+    //   }
+    // } catch (error) {
+    //   console.error(error)
+    // }
+    //   const res = await fetch("http://localhost:3000/api/customer/register", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   });
+    //   const resdata = res.json();
+    //   if (res.status === 422 || !resdata) {
+    //     window.alert("Invalid Registration ");
+    //     console.log(data)
+    //   } else {
+    //     window.alert("user successfully Registered");
+    //   }
+    // } catch (error) {
+    //   console.error(error)
+    // }

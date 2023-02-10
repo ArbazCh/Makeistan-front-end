@@ -3,15 +3,8 @@ import postOrderService from "../../../services/order.service";
 
 export const postOrder = createAsyncThunk(
   "meals/all",
-  async ({ quantity, totalAmount }, thunkAPI) => {
+  async ({ quantity, totalAmount }) => {
     const response = await postOrderService(quantity, totalAmount);
-    if (!response.data) {
-      return thunkAPI.rejectWithValue({
-        statusCode: response.status,
-        statusMessage: response.message,
-      });
-    }
-    console.log("res: ", response.data);
     return response.data;
   }
 );

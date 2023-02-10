@@ -8,7 +8,7 @@ import {
   getCartTotal,
 } from "../../redux/slices/cart";
 
-export const CartItem = (product) => {
+const CartItem = (product) => {
   const cartItem = product.item;
   const dispatch = useDispatch();
 
@@ -75,3 +75,4 @@ export const CartItem = (product) => {
     </>
   );
 };
+export default CartItem;

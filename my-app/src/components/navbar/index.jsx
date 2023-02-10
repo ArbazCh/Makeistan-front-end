@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import "./navbar.css"
 import { removeUser } from '../../redux/slices/auth';
 
-export const Navbar=()=> {
+ const Navbar=()=> {
     const {totalItems}=useSelector((state) => state.cart);
     const {token}=useSelector((state)=>state.auth)
     const dispatch=useDispatch()
@@ -36,3 +36,4 @@ export const Navbar=()=> {
     </>
   )
 }
+export default Navbar

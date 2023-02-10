@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { response } from "express";
 import { toast } from "react-toastify";
 import { postOrder } from "./thunk";
-// import { useNavigate } from "react-router-dom";
 
 const initialState = {
   order: false,
@@ -16,37 +14,40 @@ export const ordertSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(postOrder.pending, (state, action) => {
-        // console.log("action pending: ", action.payload);
         state.loading = true;
-        // toast.loading("Loading...", { position: "top-center" });
       })
       .addCase(postOrder.rejected, (state, action) => {
-        // console.log("action rejected: ", action.payload);
-        // const { status } = action.payload;
-        // console.log("status rejected: ", status);
+        const { status, message } = action.payload;
+        console.log("status rejected: ", status);
         state.loading = false;
-        state.error = state.error.message;
-        toast.error("Something went wrong. Please try again later", {
+        state.error = message;
+        toast.error(`Status: ${status} Error: ${message}`, {
           position: "top-center",
         });
       })
       .addCase(postOrder.fulfilled, (state, action) => {
-        // console.log("action Fullfilled: ", action.payload);
-        // const { status } = action.payload;
-        // console.log("status rejected: ", status);
+        const { status, message } = action.payload;
+        console.log("action: ", action.payload);
         state.loading = false;
-        state.order = true;
-        // if (status === 200) {
-        toast.success("Your order has been placed. Thank you for Shoping.", {
-          position: "top-center",
-        });
-        // }
-        //else {
-        //   toast.error("Something went wrong Please try again later", {
-        //     position: "top-center",
-        //   });
-        // }
-        // localStorage.removeItem("cart");
+
+        if (status === 200) {
+          toast.success(`${message}`, {
+            position: "top-center",
+          });
+          state.order = true;
+          localStorage.removeItem("cart");
+          console.log("state: ", state.order);
+        } else if (status === 401) {
+          toast.error(`Error ${message}`, {
+            position: "top-center",
+          });
+          state.order = false;
+          localStorage.removeItem("token");
+        } else if (status === 400) {
+          toast.error(`Error ${message}`, {
+            position: "top-center",
+          });
+        }
       });
   },
 });

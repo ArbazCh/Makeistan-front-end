@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchProduct } from "../../redux/slices/product/thunk";
 import "../../components/product/product.css";
-import { Product } from "../../components/product";
-import { Navbar } from "../../components/navbar";
-import SideDrawer from "../../components/slidedrawer"
+import { Layout, Product, SlideDrawer } from "../../components";
 
 export const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -20,10 +18,9 @@ export const ProductDetails = () => {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <>
-      {/* <Navbar /> */}
-      <SideDrawer />
+    <Layout>
+      <SlideDrawer />
       <Product product={product} />
-    </>
+    </Layout>
   );
 };

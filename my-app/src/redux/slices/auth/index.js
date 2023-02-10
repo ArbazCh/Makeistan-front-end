@@ -27,7 +27,7 @@ const authSlice = createSlice({
         const { jwtToken, user } = action.payload;
         state.user = user;
         state.token = jwtToken;
-        localStorage.setItem("token", JSON.stringify(state.token));
+        localStorage.setItem("token", state.token);
         toast.success("Login Successful");
       })
       .addCase(userLogin.rejected, (state, action) => {
@@ -38,5 +38,5 @@ const authSlice = createSlice({
       });
   },
 });
-export const { setUser, removeUser } = authSlice.actions;
+export const { removeUser } = authSlice.actions;
 export default authSlice.reducer;
