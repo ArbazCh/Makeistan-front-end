@@ -34,7 +34,7 @@ const Card = ({ item }) => {
                 <img
                   src={item?.image}
                   alt=""
-                  style={{ width: "100%", height: "15rem" }}
+                  style={{ width: "100%", height: "15rem", objectFit: "cover" }}
                   loading="lazy"
                 />
               ) : (
