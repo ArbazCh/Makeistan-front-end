@@ -5,7 +5,9 @@ const getProductService = async (id) => {
 };
 const getAllProductService = async () => {
   // console.log('here')
-  return await API.get("/product");
+  const res = await API.get("/product");
+  // console.log(res.data);
+  return res;
 };
 
 export { getProductService, getAllProductService };

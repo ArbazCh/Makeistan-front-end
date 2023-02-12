@@ -1,7 +1,9 @@
 import React from "react";
+// import { useSelector } from "react-redux";
 
 const OrderSummary = (cart) => {
   const { totalAmount, totalItems, deliveryCharge } = cart.cart;
+  // const { user } = useSelector((state) => state);
 
   return (
     <div className="checkout-page">

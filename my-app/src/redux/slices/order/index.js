@@ -18,7 +18,7 @@ export const ordertSlice = createSlice({
       })
       .addCase(postOrder.rejected, (state, action) => {
         const { status, message } = action.payload;
-        console.log("status rejected: ", status);
+        // console.log("status rejected: ", status);
         state.loading = false;
         state.error = message;
         toast.error(`Status: ${status} Error: ${message}`, {
@@ -27,7 +27,7 @@ export const ordertSlice = createSlice({
       })
       .addCase(postOrder.fulfilled, (state, action) => {
         const { status, message } = action.payload;
-        console.log("action: ", action.payload);
+        // console.log("action: ", action.payload);
         state.loading = false;
 
         if (status === 200) {
@@ -36,7 +36,7 @@ export const ordertSlice = createSlice({
           });
           state.order = true;
           localStorage.removeItem("cart");
-          console.log("state: ", state.order);
+          // console.log("state: ", state.order);
         } else if (status === 401) {
           toast.error(`Error ${message}`, {
             position: "top-center",
@@ -45,6 +45,10 @@ export const ordertSlice = createSlice({
           localStorage.removeItem("token");
         } else if (status === 400) {
           toast.error(`Error ${message}`, {
+            position: "top-center",
+          });
+        } else if (status === 500) {
+          toast.error(`${message}`, {
             position: "top-center",
           });
         }
