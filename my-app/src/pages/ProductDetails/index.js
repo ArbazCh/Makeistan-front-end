@@ -9,7 +9,7 @@ export const ProductDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   let { product, error, loading } = useSelector((state) => state.product);
-
+  // console.log("id: ", id);
   useEffect(() => {
     dispatch(fetchProduct(id));
   }, [id, dispatch]);

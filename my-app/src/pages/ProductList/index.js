@@ -11,6 +11,7 @@ const ProductList = () => {
   const { products, loading, error } = useSelector(
     (state) => state.allProducts
   );
+  // console.log("products: ", products);
 
   useEffect(() => {
     dispatch(fetchAllData());

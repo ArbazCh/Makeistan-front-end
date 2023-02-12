@@ -7,7 +7,7 @@ const postOrderService = async (quantity, totalAmount) => {
       paymentId: "1",
       date: "2020-03-12",
       orderStatus: "pending",
-      productId: "3",
+      productId: "13",
       sellerId: 3,
       orderNumber: "1234567",
       quantity: `${quantity}`,
