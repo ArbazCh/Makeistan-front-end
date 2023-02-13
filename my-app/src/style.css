@@ -32,6 +32,10 @@ code {
   text-transform: uppercase;
   color: #333;
 }
+.errors-forms{
+  color: red;
+  font-size: 12px;
+}
 .regInput{
   font-size: 14px;
   display: block;
@@ -73,6 +77,38 @@ code {
 }
 .main-form{
   padding: 60px 50px;
+  /* width: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute; */
+
+}
+@media (max-width:600px) {
+  .main-form{
+    position: relative!important;
+    width: 100%;
+  }
+  .swiper-images{
+    margin: 2rem 2rem!important;
+    height: 20rem!important;
+  }
+  
+}
+@media (min-width:600px) {
+  .main-form{
+    width: 40%;
+    top: 50%!important;
+    left: 50%!important;
+    transform: translate(-50%, -50%)!important;
+    position: absolute!important;
+  }
+ 
+  .swiper-img1,
+  .swiper-img2,
+  .swiper-img3{
+    margin-right: 0%;
+  }
 }
 
 /*-------------  forms End -------------*/
@@ -91,7 +127,7 @@ code {
   height: 100%;
 }
 .swiper-images{
-  margin: 2rem 0;
+  margin: 2rem 7rem;
   height: 26rem;
 }
 .swiper-slide.swiper-slide-active .swiper-img1,
@@ -105,6 +141,9 @@ code {
   
     margin-top: 5%;
     margin-left: 8%;
+}
+.swiper{
+  margin-top: 10%!important;
 }
 
 /* ---------swiper content--------- */
