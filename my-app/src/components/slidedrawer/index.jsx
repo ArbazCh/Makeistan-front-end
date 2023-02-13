@@ -119,11 +119,11 @@ export default function PersistentDrawerLeft() {
                 onClick={handleDrawerOpen}
                 edge="start"
                 sx={{ mr: 2, ...(open && { display: "none" }) }}
-                style={{ float: "left", marginTop: "15%" }}
+                style={{ float: "left", marginTop: "10%" }}
               >
                 <MenuIcon />
               </IconButton>
-              <Link to="/" style={{ textDecoration: "none" }}>
+              <Link to="/" className="main-logo-app">
                 <h1 className="logo">Makeistan</h1>
               </Link>
             </Grid>
@@ -145,6 +145,9 @@ export default function PersistentDrawerLeft() {
         open={open}
       >
         <DrawerHeader>
+        <Link to="/" state={{textDecoration:"none", color:"#000"}} >
+                <h1 className="logo">Makeistan</h1>
+              </Link>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />

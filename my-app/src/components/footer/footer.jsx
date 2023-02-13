@@ -12,7 +12,7 @@ const Footer = () => {
      <div className="main-footer">
         <div className="footer-inner">
             <Grid container spacing={3}>
-              <Grid item xs={4} >
+              <Grid item xs={12}  md={4} >
                 <div className="finnerlinks">
                   <h1>Useful links</h1>
                   <Link to="/login" className='routelink'>Login</Link>
@@ -22,7 +22,7 @@ const Footer = () => {
                 </div>
 
               </Grid>
-              <Grid item xs={4} >
+              <Grid item xs={12}  md={4} >
               <div className="finnerlinks">
                   <h1>Useful links</h1>
                   <Link to="/login" className='routelink'>Login</Link>
@@ -32,7 +32,7 @@ const Footer = () => {
                 </div>
                 
               </Grid>
-              <Grid item xs={4}  >
+              <Grid item xs={12}  md={4}  >
               <div className="fouterlinks">
 
                  <a href='#'  ><FacebookIcon className='footer-icons' /></a>

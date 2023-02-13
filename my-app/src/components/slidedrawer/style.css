@@ -1,3 +1,12 @@
 /* .css-ciy9n4-MuiPaper-root-MuiAppBar-root{
     background-color: rgb(255, 255, 255)!important;
 } */
+.main-logo-app{
+    text-decoration: none!important;
+}
+@media (max-width:600px) {
+    .main-logo-app{
+        display: none!important;
+    }
+    
+}

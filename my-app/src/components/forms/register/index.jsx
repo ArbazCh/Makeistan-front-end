@@ -58,7 +58,8 @@ const Signup = () => {
                 }
               })}
             />
-            {errors.email?.message}
+            {/* {errors.email?.message} */}
+            {errors.email && <p className='errors-forms'>{errors.email.message}</p>}
             <br />
             <label className="labelReg">
               Password <span className="rsymbol">*</span>{" "}
@@ -77,7 +78,7 @@ const Signup = () => {
                 }
               })}
             />
-            {errors.password && <p>{errors.password.message}</p>}
+            {errors.password && <p className='errors-forms'>{errors.password.message}</p>}
             <br />
             <br />
             <label className="labelReg">
@@ -101,7 +102,7 @@ const Signup = () => {
                 validate: value => value === cpassword || "Passwords do not match"
               })}
             />
-            {errors.cpassword && <p>{errors.cpassword.message}</p>}
+            {errors.cpassword && <p className='errors-forms'>{errors.cpassword.message}</p>}
             <br />
             <br />
             <label className="labelReg">
@@ -115,7 +116,7 @@ const Signup = () => {
                 required: "First Name Cannot be empty"
               })}
             />
-            {errors.firstName && <p>{errors.firstName.message}</p>}
+            {errors.firstName && <p className='errors-forms'>{errors.firstName.message}</p>}
             <br />
             <br />
             <label className="labelReg">
@@ -129,7 +130,7 @@ const Signup = () => {
                 required: "Last Name Cannot be empty "
               })}
             />
-            {errors.lastName && <p>{errors.lastName.message}</p>}
+            {errors.lastName && <p className='errors-forms'>{errors.lastName.message}</p>}
             <br />
             <br />
             <label className="labelReg">
@@ -143,7 +144,7 @@ const Signup = () => {
                 required: "Address is required "
               })}
             />
-            {errors.address && <p>{errors.address.message}</p>}
+            {errors.address && <p className='errors-forms'>{errors.address.message}</p>}
             <br />
             <br />
             <input
